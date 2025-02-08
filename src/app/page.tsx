@@ -1,101 +1,74 @@
-import Image from "next/image";
+import { HomePageTopImages } from "@/components/home-page-top-images";
+import { HomePageTopText } from "@/components/home-page-top-text";
+import { HomePageParagraph } from "@/components/home-page-paragraph";
+import { HomePageTextCards } from "@/components/home-page-text-cards";
+import { HomePageVideoText } from "@/components/home-page-video-text";
+import { HomePageVideo } from "@/components/home-page-video";
+import { HomePageBottomText } from "@/components/home-page-bottom-text";
+import { ContactForm } from "@/components/contact-form";
+import { ContactFormSlider } from "@/components/contact-form-slider";
+import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="">
+      <section className="flex mt-10 justify-center w-screen gap-4">
+        <div className="flex items-center justify-between w-[80%]">
+          <HomePageTopText />
+          <HomePageTopImages />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+      <section className="flex justify-center w-screen mt-20">
+        <HomePageParagraph />
+      </section>
+      <section id="home-page-text-cards-section" className="flex justify-center w-screen mt-20">
+        <HomePageTextCards />
+      </section>
+      <section className="flex justify-center w-screen mt-20 min-[1590px]:ml-[2vw]">
+        <div className="flex min-[950px]:flex-row flex-col-reverse items-center justify-center gap-8 min-[950px]:w-[80%] w-[90%] min-[950px]:mt-4 -mt-12">
+          <HomePageVideo /> 
+          <HomePageVideoText />
+        </div>
+      </section>
+      <section className="flex justify-center w-screen pt-20">
+        <HomePageBottomText />
+      </section>
+      <section className="flex flex-col justify-center items-center w-screen pt-20 text-center bg-[#095d66]">
+        <div className="w-[80%] max-w-7xl bg-[#095d66]">
+          <div className="mb-16">
+            <h2 className="text-[2.5rem] font-bold text-white mb-4">
+              CRE AWARDS
+            </h2>
+            <p className="text-[1.5rem] text-white/80">
+              Премия коммерческой недвижимости
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-[2.5rem] font-bold text-white mb-4">
+              Программа и спикеры
+            </h2>
+            <p className="text-[1.5rem] text-white/80">
+              Спикеры
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="contact-form-section" className="bg-[#095d66] py-16">
+        <div className="container mx-auto px-4 mr-0 min-[950px]:mr-auto">
+          <div className="flex flex-col md:flex-row justify-center items-start gap-8">
+            <ContactFormSlider />
+            <ContactForm />
+          </div>
+        </div>
+      </section>
+
+            <div className="w-screen h-[30%] bg-[#095d66]">
+              <h1 className="text-[2.5rem] font-bold text-white pb-4 text-center">
+              Информационные партнеры
+              </h1>
+            </div>
+      <Footer />
     </div>
   );
 }
