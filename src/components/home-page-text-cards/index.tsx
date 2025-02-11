@@ -2,14 +2,13 @@ import Link from "next/link";
 import { Building2, Users, Presentation, Trophy } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-function TextCards({title, description, link, icon: Icon}: {
+function TextCards({title, description, link, icon: Icon, buttonText}: {
   title: string, 
   description: string, 
   link: string,
-  icon: React.ElementType
+  icon: React.ElementType,
+  buttonText: string
 }) {
-  const { t } = useTranslation();
-  
   return (
     <Link 
       href={link}
@@ -19,18 +18,18 @@ function TextCards({title, description, link, icon: Icon}: {
         <div className="w-full flex flex-col h-full">
           <div className="flex justify-center mb-6">
             <div className="text-[#15bacc] group-hover:text-[#095d66] transition-colors duration-300">
-              <Icon className="w-8 h-8 text-[#15bacc] group-hover:text-[#095d66] transition-colors duration-300" />
+              <Icon className="w-14 h-14 text-[#15bacc] group-hover:text-[#095d66] transition-colors duration-300" />
             </div>
           </div>
-          <h2 className="text-[1.6rem] font-bold text-[#095d66] group-hover:text-[#15bacc] leading-tight mb-4 text-center transition-colors duration-300">
+          <h2 className="text-[1.6rem] font-bold text-[#095d66] group-hover:text-[#15bacc] leading-tight mb-4 text-start transition-colors duration-300">
             {title}
           </h2>
-          <p className="text-[1rem] text-[#095d66]/80 group-hover:text-[#095d66] leading-relaxed text-center transition-colors duration-300 mb-6">
+          <p className="text-[1rem] text-[#095d66]/80 group-hover:text-[#095d66] leading-relaxed text-start transition-colors duration-300 mb-6">
             {description}
           </p>
           <div className="mt-auto flex justify-center">
             <span className="inline-block px-6 py-2 rounded-full bg-[#15bacc] text-white group-hover:bg-[#095d66] transition-colors duration-300">
-              {t('common.visitUs')}
+              {buttonText}
             </span>
           </div>
         </div>
@@ -47,25 +46,29 @@ function HomePageTextCards() {
       title: t('HomePageTextCards.exhibition.title'),
       description: t('HomePageTextCards.exhibition.description'),
       link: "#contact-form-section",
-      icon: Building2
+      icon: Building2,
+      buttonText: t('HomePageTextCards.exhibition.buttonText')
     },
     {
       title: t('HomePageTextCards.networking.title'),
       description: t('HomePageTextCards.networking.description'),
       link: "#contact-form-section",
-      icon: Users
+      icon: Users,
+      buttonText: t('HomePageTextCards.networking.buttonText')
     },
     {
       title: t('HomePageTextCards.forum.title'),
       description: t('HomePageTextCards.forum.description'),
       link: "/program",
-      icon: Presentation
+      icon: Presentation,
+      buttonText: t('HomePageTextCards.forum.buttonText')
     },
     {
       title: t('HomePageTextCards.awards.title'),
       description: t('HomePageTextCards.awards.description'),
       link: "/cre-awards",
-      icon: Trophy
+      icon: Trophy,
+      buttonText: t('HomePageTextCards.awards.buttonText')
     },
   ];
 
@@ -79,6 +82,7 @@ function HomePageTextCards() {
             description={content.description} 
             link={content.link}
             icon={content.icon}
+            buttonText={content.buttonText}
           />
         ))}
       </div>

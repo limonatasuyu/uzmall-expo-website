@@ -9,6 +9,7 @@ const images = [
   "/contact-form-image-1.jpg",
   "/contact-form-image-2.jpg",
   "/contact-form-image-3.jpg",
+  "/contact-form-image-4.jpg",
 ]
 
 export function ContactFormSlider() {

@@ -12,6 +12,11 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        'gothic': ['Gothic', 'sans-serif'],
+        'helvetica': ['Helvetica', 'sans-serif'],
+        'century-gothic': ['CenturyGothic', 'sans-serif']
+      }
     },
   },
   plugins: [],

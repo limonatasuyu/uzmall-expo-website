@@ -29,10 +29,10 @@ function NavbarItem({
   const { t } = useTranslation();
   
   return (
-    <NavigationMenuItem className="max-[910px]:hidden">
+    <NavigationMenuItem className="max-[1230px]:hidden">
       <NavigationMenuLink 
         href={link} 
-        className="font-bold text-[#eaeaea] hover:text-[#15bacc]"
+        className="font-bold text-[#095d66] hover:text-[#15bacc] text-lg"
         onClick={onClick}
       >
         {typeof content === 'string' ? t(content) : content}
@@ -43,8 +43,8 @@ function NavbarItem({
 
 function NavbarIcon() {
   return (
-    <NavigationMenuItem className="mt-6">
-      <NavigationMenuLink>
+    <NavigationMenuItem >
+      <NavigationMenuLink href="/">
         <Image src="/logo-1.png" alt="logo" width={180} height={45} loader={customLoader} />
       </NavigationMenuLink>
     </NavigationMenuItem>
@@ -62,10 +62,10 @@ function Navbar({ contactFormRef }: { contactFormRef?: React.RefObject<HTMLFormE
   };
 
   const navbarItems = [
-    {
-      title: "Navbar.about",
-      href: "#home-page-text-cards-section",
-    },
+    // {
+    //   title: "Navbar.about",
+    //   href: "#home-page-text-cards-section",
+    // },
     {
       title: "Navbar.participants",
       href: "#contact-form-section",
@@ -82,12 +82,16 @@ function Navbar({ contactFormRef }: { contactFormRef?: React.RefObject<HTMLFormE
     },
     {
       title: "Navbar.awards",
-      href: "https://t.me/uzfranchiseassociation",
+      href: "/cre-awards",
+    },
+    {
+      title: "Navbar.contactus",
+      href: "#",
     },
   ];
 
   return (
-    <NavigationMenu className="w-screen flex justify-center h-[50px] bg-[#095d66]">
+    <NavigationMenu className="w-screen flex justify-center h-[50px] bg-[#095d66]/10 py-10">
       <NavigationMenuList className="w-screen flex justify-center items-center">
         <div className="w-[95vw] flex justify-between items-center overflow-hidden">
           <div className="flex justify-center items-center">
@@ -104,13 +108,13 @@ function Navbar({ contactFormRef }: { contactFormRef?: React.RefObject<HTMLFormE
           <div className="flex justify-center items-center gap-4">
             <LanguageSwitcher />
             <NavbarItem
-              content={<Button className="bg-white text-black rounded-full px-4 py-2">{t('Navbar.telegram')}</Button>}
-              link="https://meet.google.com/fko-sgki-mqf"
+              content={<Button className="bg-[#095d66] hover:bg-[#15bacc] text-white rounded-full px-4 py-2">{t('Navbar.telegram')}</Button>}
+              link="https://t.me/uzmall_uz"
             />
             <Sheet>
               <SheetTrigger asChild>
-                <Button className="max-[910px]:flex hidden ml-4 hover:bg-gray-100">
-                  <MenuIcon color="#15bacc" size={24} />
+                <Button className="max-[1230px]:flex hidden ml-4 bg-[#15bacc]/10">
+                  <MenuIcon color="#095d66" size={24} />
                 </Button>
               </SheetTrigger>
               <SheetContent>
@@ -119,7 +123,7 @@ function Navbar({ contactFormRef }: { contactFormRef?: React.RefObject<HTMLFormE
                     <a
                       key={item.title}
                       href={item.href}
-                      className="font-bold text-[#095d66] hover:text-[#15bacc]"
+                      className="font-bold text-[#095d66] hover:text-[#15bacc] text-lg"
                       onClick={(e) => {
                         if (item.onClick) {
                           item.onClick(e);

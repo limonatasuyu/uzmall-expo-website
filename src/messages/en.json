@@ -99,8 +99,7 @@
       "followUs": "Follow Us"
     },
     "menu": {
-      "about": "About Us",
-      "services": "Services",
+      "uzmallexpo": "UzMall Expo",
       "contact": "Contact Us"
     },
     "quickLinks": {
@@ -122,19 +121,23 @@
   "HomePageTextCards": {
     "exhibition": {
       "title": "Largest Industry Exhibition in Central Asia",
-      "description": "For commercial real estate and retail, bringing together 100+ participants, 500+ brands and 9000+ visitors"
+      "description": "For commercial real estate and retail, bringing together 100+ participants, 500+ brands and 9000+ visitors",
+      "buttonText": "Reserve a stand"
     },
     "networking": {
       "title": "Global Networking",
-      "description": "Business meetings, new connections, negotiations and communication with key industry leaders"
+      "description": "Business meetings, new connections, negotiations and communication with key industry leaders",
+      "buttonText": "Get a badge"
     },
     "forum": {
       "title": "Commercial Real Estate Forum",
-      "description": "Here, trends for the next 5 years will be announced, practical cases and success stories in the industry will be shared"
+      "description": "Here, trends for the next 5 years will be announced, practical cases and success stories in the industry will be shared",
+      "buttonText": "Go to program"
     },
     "awards": {
       "title": "CRE AWARDS - Commercial Real Estate Award",
-      "description": "The Uzmall Awards is presented for significant contributions and successful activities in the commercial real estate and retail market in Uzbekistan."
+      "description": "The Uzmall Awards is presented for significant contributions and successful activities in the commercial real estate and retail market in Uzbekistan.",
+      "buttonText": "Go"
     }
   },
   "HomePageTopImages": {
@@ -145,10 +148,11 @@
     }
   },
   "HomePageTopText": {
-    "title": "First Investment Exhibition Forum for Commercial Real Estate in Central Asia",
+    "title": "UZMALL",
     "date": "May 28-29, 2025",
     "participantButton": "Become a participant!",
-    "visitorButton": "Become a visitor!"
+    "visitorButton": "Become a visitor!",
+    "description": "The Uzmall Awards is presented for significant contributions and successful activities in the commercial real estate and retail market in Uzbekistan."
   },
   "HomePageVideoText": {
     "items": {
@@ -179,12 +183,12 @@
     }
   },
   "Navbar": {
-    "about": "About Us",
     "participants": "For Participants",
     "visitors": "For Visitors",
     "program": "Program & Speakers",
     "awards": "Cre Awards",
-    "telegram": "Telegram"
+    "telegram": "Telegram",
+    "contactus": "Contact Us"
   },
   "HomePage": {
     "programSection": {
@@ -218,8 +222,17 @@
   },
   "creAwards": {
     "logoAlt": "UzMall Awards",
-    "description1": "UzMall Awards is presented for significant contribution and successful activities in the commercial real estate and retail market in Russia.",
-    "description2": "In 2025, the Award will be held for the seventh time.",
-    "description3": "The best developers, retail chains, companies with technologies and innovations have been selected by the industry expert community for several years in a row. This is a recognition of the highest quality of work, stability and leadership positions."
+    "title": "CRE AWARDS",
+    "description1": "The UzMall Awards is presented for significant contributions and successful activities in the commercial real estate and retail market in Uzbekistan.",
+    "description2": "The best developers, retail chains, companies with technologies and innovations will be awarded for the first time on behalf of the industry expert community. This is a recognition of the highest quality of work, stability and leadership positions.",
+    "description3": "Currently, we are approving nominations and the list of judges. Follow updates on our social networks and website.",
+    "contactTitle": "SUBMIT APPLICATION",
+    "form": {
+      "fullName": "Full Name",
+      "phone": "Phone Number",
+      "position": "Position",
+      "company": "Company Name",
+      "description": "What does your company do?"
+    }
   }
 }

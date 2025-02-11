@@ -35,7 +35,7 @@ function HomePageVideoText() {
   ];
   
   return (
-    <div className="self-center min-[950px]:max-w-[80%] grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="self-center min-[950px]:max-w-[80%] grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/5 rounded-xl backdrop-blur-sm">
       {contents.map((content) => {
         const boldText = t(`HomePageVideoText.items.${content.key}.boldText`);
         const thinText = t(`HomePageVideoText.items.${content.key}.thinText`);

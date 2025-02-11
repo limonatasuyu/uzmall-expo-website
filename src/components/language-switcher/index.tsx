@@ -15,8 +15,8 @@ export function LanguageSwitcher() {
         onClick={() => handleLanguageChange('en')}
         className={`text-sm transition-colors ${
           i18n.language === 'en' 
-            ? 'text-white' 
-            : 'text-white/50 hover:text-white'
+            ? 'text-[#095d66]' 
+            : 'text-[#095d66]/50 hover:text-[#095d66]'
         }`}
         type="button"
       >
@@ -27,8 +27,8 @@ export function LanguageSwitcher() {
         onClick={() => handleLanguageChange('ru')}
         className={`text-sm transition-colors ${
           i18n.language === 'ru' 
-            ? 'text-white' 
-            : 'text-white/50 hover:text-white'
+            ? 'text-[#095d66]' 
+            : 'text-[#095d66]/50 hover:text-[#095d66]'
         }`}
         type="button"
       >
@@ -39,8 +39,8 @@ export function LanguageSwitcher() {
         onClick={() => handleLanguageChange('uz')}
         className={`text-sm transition-colors ${
           i18n.language === 'uz' 
-            ? 'text-white' 
-            : 'text-white/50 hover:text-white'
+            ? 'text-[#095d66]' 
+            : 'text-[#095d66]/50 hover:text-[#095d66]'
         }`}
         type="button"
       >

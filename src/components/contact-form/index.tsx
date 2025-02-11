@@ -144,7 +144,7 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
                   <FormControl>
                     <div className="space-y-2">
                       <label htmlFor={fieldName} className="text-white">
-                        {t(fieldName)}
+                        {t(`ContactForm.${fieldName}`)}
                       </label>
                       <Input
                         id={fieldName}
