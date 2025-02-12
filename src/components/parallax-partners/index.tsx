@@ -107,11 +107,11 @@ export const ParallaxPartners = () => {
           </Swiper>
         </div>
 
-        <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"> {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 rounded-xl bg-white backdrop-blur-sm"> {/* Desktop Grid */}
           {partners.map((partner, index) => (
             <div 
               key={index as number}
-              className="bg-white backdrop-blur-sm rounded-xl p-6 hover:bg-white/70 transition-all duration-300"
+              className=" backdrop-blur-sm p-6 transition-all duration-300"
             >
               <div className="relative aspect-[3/2] w-full">
                 <Image

@@ -4,9 +4,11 @@ import { usePathname } from "next/navigation";
 
 export default function Background() {
 	const pathname = usePathname();
-	const isCreAwardsPage = pathname === "/cre-awards" || pathname === "/cre-awards.html";
+	const isCreAwardsPage =
+		pathname === "/cre-awards" || pathname === "/cre-awards.html";
 
-	const isSpeakersPage = pathname === "/speakers" || pathname === "/speakers.html";
+	const isSpeakersPage =
+		pathname === "/speakers" || pathname === "/speakers.html";
 
 	return (
 		<div className="absolute inset-0 -z-10">

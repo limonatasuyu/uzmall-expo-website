@@ -20,12 +20,21 @@ import { MapSection } from "@/components/map-section";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { Parallax } from "react-scroll-parallax";
 import { FormatsSection } from "@/components/formats-section";
+import { BrandsSection } from '@/components/brands-section'
 
 export default function Home() {
 	const contactFormRef = useRef<ContactFormRef>(null);
 
 	return (
 		<ParallaxProvider>
+			<Image
+				src="/uzmall-logo-u.png"
+				alt="background"
+				height={1000}
+				width={1000}
+				className="fixed top-20 -right-40 z-0 opacity-10"
+				loader={customLoader}
+			/>
 			<Navbar
 				contactFormRef={
 					contactFormRef as unknown as React.RefObject<HTMLFormElement>
@@ -96,8 +105,9 @@ export default function Home() {
 						</Parallax>
 					</section>
 					<section className="flex justify-center w-screen bg-[#eaeaea]">
-						<div className="w-[90%] max-w-7xl mb-12 h-[50vh] bg-[#095d66] rounded-lg" />
+						<BrandsSection />
 					</section>
+
 					<section
 						className="flex justify-center w-screen bg-[#eaeaea]"
 						id="contact-form-section"
