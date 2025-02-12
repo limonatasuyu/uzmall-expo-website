@@ -20,7 +20,7 @@ export default function HomePageTopImages() {
   const photos: ImageCard[] = [
     {
       title: t('HomePageTopImages.images.person1'),
-      imageUrl: '/person-1.png',
+      imageUrl: '/person-1.jpg',
     },
     //{
     //  title: t('HomePageTopImages.images.person2'),
@@ -28,12 +28,12 @@ export default function HomePageTopImages() {
     //},
     {
       title: t('HomePageTopImages.images.person3'),
-      imageUrl: '/person-3.png',
+      imageUrl: '/person-3.jpg',
     }
   ];
 
   return (
-    <div className="hidden min-[1170px]:flex justify-center items-center gap-4 p-4 h-[600px] max-w-1/2 overflow-hidden relative">
+    <div className="flex flex-col justify-center items-center gap-4 p-4 h-[600px] max-w-1/2 overflow-hidden relative">
       {photos.map((photo, index) => (
         <div 
           key={index as number} 

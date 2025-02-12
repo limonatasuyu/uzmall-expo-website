@@ -4,7 +4,17 @@
     "visitUs": "Visit Us"
   },
   "HomePageSpeakers": {
-    "title": "Speakers"
+    "title": "Speakers",
+    "speaker1": {
+      "name": "Murat Azamov",
+      "role": "Organizer",
+      "description": "Founder and expert in business systematization, Uzbekistan Franchise Association (UFA). More than 300 stores in 10 countries of the world. Among clients: Collin's, Nautica"
+    },
+    "speaker2": {
+      "name": "Maxim Shabashov",
+      "role": "Organizer",
+      "description": "Managing director of Lynks Property Management in Uzbekistan with more than 20 years of experience in managing mixed-use properties. He oversaw projects such as MFC 'Lety', 'Nordmoll' and 'MODERA Towers', and successfully took the company to the Uzbek market. Lives in Tashkent with his family."
+    }
   },
   "ContactForm": {
     "title": "Fill out the form to contact us",
@@ -90,7 +100,7 @@
   },
   "HomePageParagraph": {
     "title": "UzMall",
-    "description": "brings together players in the commercial and mixed-use real estate market, investments, management and operations, consulting, retail, leasing, technology and services for these sectors."
+    "description": "Brings together players in the commercial and mixed-use real estate market, investments, management and operations, consulting, retail, leasing, technology and services for these sectors."
   },
   "Footer": {
     "sections": {
@@ -148,7 +158,6 @@
     }
   },
   "HomePageTopText": {
-    "title": "UZMALL",
     "date": "May 28-29, 2025",
     "participantButton": "Become a participant!",
     "visitorButton": "Become a visitor!",
@@ -178,7 +187,7 @@
       },
       "experts": {
         "boldText": "50+",
-        "thinText": "international experts who will share market development trends for the next 5 years"
+        "thinText": "international experts who will share market development trends for the next 5-10 years"
       }
     }
   },
@@ -187,7 +196,6 @@
     "visitors": "For Visitors",
     "program": "Program & Speakers",
     "awards": "Cre Awards",
-    "telegram": "Telegram",
     "contactus": "Contact Us"
   },
   "HomePage": {
@@ -233,6 +241,26 @@
       "position": "Position",
       "company": "Company Name",
       "description": "What does your company do?"
+    }
+  },
+  "FormatsSection": {
+    "title": "Collaboration Formats",
+    "individualConstruction": {
+      "title": "Individual Construction",
+      "description": "You rent an area where you can independently design a unique stand, which will allow you to better emphasize your company's features and stand out among other brands."
+    },
+    "turnkeyStand": {
+      "title": "Turnkey Stand",
+      "description": "You don't need to deal with construction and equipment of the space, we will prepare a unique stand for you that meets all the requirements and standards of the event."
+    },
+    "speaker": {
+      "title": "Become a Stage Speaker",
+      "description": "You will be able to speak to an audience of 150-200 people, announce your company, your products and services, and establish new contacts."
+    },
+    "moreInfo": {
+      "title": "Learn More",
+      "description": "The full list and details about collaboration formats can be obtained from the manager by submitting an application.",
+      "button": "Submit Application"
     }
   }
 }

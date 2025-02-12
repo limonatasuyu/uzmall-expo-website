@@ -59,7 +59,7 @@ function HomePageTextCards() {
     {
       title: t('HomePageTextCards.forum.title'),
       description: t('HomePageTextCards.forum.description'),
-      link: "/program",
+      link: "/speakers",
       icon: Presentation,
       buttonText: t('HomePageTextCards.forum.buttonText')
     },

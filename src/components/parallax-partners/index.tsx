@@ -57,14 +57,14 @@ export const ParallaxPartners = () => {
     },
     {
       link: "#",
-      image: "/logo-tüyap.png",
+      image: "/logo-tuyap.png",
     },
   ];
 
   return (
     <section className="w-full py-20">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-[2.5rem] font-bold text-white text-center mb-12">
+        <h2 className="min[450px]:text-4xl text-3xl md:text-[2.5rem] font-bold text-[#095d66] text-center mb-12">
           {t("HomePagePartners.title")}
         </h2>
         
@@ -90,7 +90,7 @@ export const ParallaxPartners = () => {
           >
             {partners.map((partner, index) => (
               <SwiperSlide key={index as number} className="w-full">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300 h-full">
+                <div className="bg-white backdrop-blur-sm rounded-xl p-6 hover:bg-white/70 transition-all duration-300 h-full">
                   <div className="relative aspect-[3/2] w-full">
                     <Image
                       src={partner.image}
@@ -111,7 +111,7 @@ export const ParallaxPartners = () => {
           {partners.map((partner, index) => (
             <div 
               key={index as number}
-              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300"
+              className="bg-white backdrop-blur-sm rounded-xl p-6 hover:bg-white/70 transition-all duration-300"
             >
               <div className="relative aspect-[3/2] w-full">
                 <Image

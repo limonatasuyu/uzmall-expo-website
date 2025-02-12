@@ -19,7 +19,7 @@ function HomePageParagraph() {
           priority
         />
       </div>
-      <p className="font-century-gothic text-3xl min-[950px]:text-5xl font-bold text-white/80 select-none hover:text-white/90 transition-all duration-300 text-center min-[950px]:text-left max-w-[800px]">
+      <p className="font-century-gothic text-2xl min-[950px]:text-4xl font-bold text-[#095d66]/80 select-none hover:text-[#095d66]/90 transition-all duration-300 text-center max-w-[800px]">
         {t('HomePageParagraph.description')}
       </p>
     </div>

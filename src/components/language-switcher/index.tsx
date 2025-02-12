@@ -10,7 +10,7 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex flex-col items-center">
       <button 
         onClick={() => handleLanguageChange('en')}
         className={`text-sm transition-colors ${

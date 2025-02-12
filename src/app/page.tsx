@@ -19,6 +19,8 @@ import { ParallaxPartners } from "@/components/parallax-partners";
 import { MapSection } from "@/components/map-section";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { Parallax } from "react-scroll-parallax";
+import { FormatsSection } from "@/components/formats-section";
+
 export default function Home() {
 	const contactFormRef = useRef<ContactFormRef>(null);
 
@@ -30,12 +32,12 @@ export default function Home() {
 				}
 			/>
 			<main>
-				<div className="bg-gradient-to-b from-[#eaeaea] to-[#095d66]">
+				<div className="bg-[#eaeaea]">
 					<Link
 						href="https://t.me/uzfranchiseassociation"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="fixed bottom-8 right-8 w-14 h-14 bg-[#15bacc] rounded-full flex items-center justify-center shadow-lg hover:bg-[#095d66] transition-colors duration-300 z-50"
+						className="fixed bottom-8 right-8 w-14 h-14  rounded-full flex items-center justify-center shadow-lg transition-colors duration-300 z-50"
 						aria-label="Contact us on Telegram"
 					>
 						<Image
@@ -49,13 +51,13 @@ export default function Home() {
 					</Link>
 
 					<section className="flex pt-10 pb-10 rounded-b-[100px] justify-center w-screen">
-						<div className="flex min-[950px]:flex-row flex-col items-center min-[950px]:items-start min-[950px]:justify-between gap-8 w-[90%] max-w-7xl">
+						<div className="flex flex-col min-[950px]:flex-row items-center lg:items-start justify-between gap-8 w-[95%] md:w-[90%] max-w-7xl">
 							<HomePageTopText
 								contactFormRef={
 									contactFormRef as unknown as React.RefObject<HTMLFormElement>
 								}
 							/>
-							<div className="min-[950px]:flex-shrink-0">
+							<div className="lg:flex-shrink-0 w-full lg:w-auto">
 								<HomePageVideo />
 							</div>
 						</div>
@@ -70,7 +72,7 @@ export default function Home() {
 						<HomePageTextCards />
 					</section>
 					<section className="flex justify-center w-screen mt-20 min-[1590px]:ml-[2vw] pb-10">
-						<div className="flex min-[950px]:flex-row flex-col-reverse items-center justify-center gap-8 min-[950px]:w-[80%] w-[90%] min-[950px]:mt-4 -mt-12">
+						<div className="flex min-[950px]:flex-row flex-col items-center justify-center gap-8 min-[950px]:w-[80%] w-[90%] min-[950px]:mt-4 -mt-12">
 							<HomePageTopImages />
 							<HomePageVideoText />
 						</div>
@@ -80,19 +82,24 @@ export default function Home() {
 							<HomePageBottomTextCards />
 						</div>
 					</section>
-					<section className="flex justify-center w-screen bg-gradient-to-b from-white to-[#eaeaeb]">
+					<section
+						id="home-page-speakers-section"
+						className="flex justify-center w-screen bg-[#eaeaea]"
+					>
 						<Parallax
 							translateY={[10, -15]}
-							className="w-full flex justify-center rounded-t-[100px] bg-gradient-to-b from-[#eaeaea] to-[#eaeaeb] mt-4 border-t-2 border-t-[#15bacc] border-dotted"
+							className="w-full flex justify-center rounded-t-[100px] bg-gradient-to-b from-[#eaeaea] to-white mt-4 "
 						>
-							<div className="w-[90%] max-w-7xl mb-12">
+							<div className="w-[90%] max-w-5xl mb-12">
 								<HomePageSpeakers />
 							</div>
 						</Parallax>
 					</section>
-
+					<section className="flex justify-center w-screen bg-[#eaeaea]">
+						<div className="w-[90%] max-w-7xl mb-12 h-[50vh] bg-[#095d66] rounded-lg" />
+					</section>
 					<section
-						className="flex justify-center w-screen bg-gradient-to-b from-[#eaeaeb] to-[#739FA4]"
+						className="flex justify-center w-screen bg-[#eaeaea]"
 						id="contact-form-section"
 					>
 						<ParallaxContact
@@ -101,7 +108,10 @@ export default function Home() {
 							}
 						/>
 					</section>
-					<section className="flex justify-center w-screen bg-gradient-to-b from-[#739FA4] to-[#eaeaea]">
+					<section className="flex justify-center w-screen bg-[#eaeaea]">
+						<FormatsSection />
+					</section>
+					<section className="flex justify-center w-screen bg-[#eaeaea]">
 						<ParallaxPartners />
 					</section>
 					<section className="flex flex-col items-center justify-center w-screen py-16 bg-[#eaeaea]">
