@@ -11,7 +11,7 @@ interface HomePageTopTextProps {
 }
 
 function HomePageTopText({ contactFormRef }: HomePageTopTextProps) {
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 
 	const scrollToContactForm = (
 		purpose: (typeof contactFormPurposes)[number],
@@ -21,11 +21,16 @@ function HomePageTopText({ contactFormRef }: HomePageTopTextProps) {
 		contactFormRef.current?.setPurpose(purpose);
 	};
 
+	const englishBannerPath = "/banner-en.png";
+	const russianBannerPath = "/banner-ru.png";
+
+	const bannerPath = i18n.language === 'ru' ? russianBannerPath : englishBannerPath;
+
 	return (
 		<div className="w-full lg:max-w-[800px] flex flex-col">
 			<div className="relative w-full h-auto aspect-[1000/600] mb-6">
 				<Image
-					src="/banner.png"
+					src={bannerPath}
 					alt="UzMall Logo"
 					width={1100}
 					height={1100}
