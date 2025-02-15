@@ -24,7 +24,7 @@
     "email": "Email",
     "purpose": "Purpose of participation",
     "message": "Message",
-    "submit": "Get ticket",
+    "submit": "Submit a request",
     "purposes": {
       "visitor": "be a visitor to the exhibition (free)",
       "sell": "sell your commercial property",
@@ -109,7 +109,7 @@
       "followUs": "Follow Us"
     },
     "menu": {
-      "uzmallexpo": "UzMall Expo",
+      "uzmallexpo": "UzMallEXPO",
       "contact": "Contact Us"
     },
     "quickLinks": {
@@ -195,7 +195,7 @@
     "participants": "For Participants",
     "visitors": "For Visitors",
     "program": "Program & Speakers",
-    "awards": "Cre Awards",
+    "awards": "CRE AWARDS",
     "contactus": "Contact Us"
   },
   "HomePage": {

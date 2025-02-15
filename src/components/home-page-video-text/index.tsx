@@ -56,11 +56,11 @@ function HomePageVideoText() {
               />
             </div>
             <div>
-              <h2 className="text-[2.5rem] font-bold text-[#095d66] leading-tight mb-2">
+              <h2 className="text-[3rem] font-bold text-[#095d66] leading-tight mb-2">
                 {boldText}
               </h2>
               <hr className="w-[60%] h-[5px] bg-[#095d66] mb-2"/>
-              <p className="text-[1rem] text-[#095d66] whitespace-pre-line leading-relaxed">
+              <p className="text-[1rem] font-semibold text-[#095d66] whitespace-pre-line leading-relaxed">
                 {thinText}
               </p>
             </div>

@@ -63,16 +63,11 @@ function NavbarIcon() {
 }
 
 function Navbar({
-	contactFormRef,
-}: { contactFormRef?: React.RefObject<HTMLFormElement> }) {
+	handlePurposeClick,
+}: { handlePurposeClick?: (e: React.MouseEvent, purpose: string) => void }) {
 	const { t } = useTranslation();
 
-	const handlePurposeClick = (e: React.MouseEvent, purpose: string) => {
-		e.preventDefault();
-		const contactForm = document.querySelector("#contact-form-section");
-		contactForm?.scrollIntoView({ behavior: "smooth" });
-		contactFormRef?.current?.setPurpose(purpose);
-	};
+
 
 	const navbarItems = [
 		// {
@@ -82,12 +77,12 @@ function Navbar({
 		{
 			title: "Navbar.participants",
 			href: "#contact-form-section",
-			onClick: (e: React.MouseEvent) => handlePurposeClick(e, "represent"),
+			onClick: (e: React.MouseEvent) => handlePurposeClick?.(e, "represent"),
 		},
 		{
 			title: "Navbar.visitors",
 			href: "#contact-form-section",
-			onClick: (e: React.MouseEvent) => handlePurposeClick(e, "visitor"),
+			onClick: (e: React.MouseEvent) => handlePurposeClick?.(e, "visitor"),
 		},
 		{
 			title: "Navbar.program",

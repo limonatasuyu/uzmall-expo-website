@@ -9,7 +9,6 @@ import { HomePageBottomTextCards } from "@/components/home-page-bottom-text-card
 import type { ContactFormRef } from "@/components/contact-form";
 import { Footer } from "@/components/footer";
 import { useRef } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { customLoader } from "@/lib/customLoader";
 import { Navbar } from "@/components/navbar";
@@ -20,10 +19,17 @@ import { MapSection } from "@/components/map-section";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { Parallax } from "react-scroll-parallax";
 import { FormatsSection } from "@/components/formats-section";
-import { BrandsSection } from '@/components/brands-section'
-
+import { BrandsSection } from "@/components/brands-section";
+import { Stickers } from "@/components/stickers";
 export default function Home() {
 	const contactFormRef = useRef<ContactFormRef>(null);
+
+	const handlePurposeClick = (e: React.MouseEvent, purpose: string) => {
+		e.preventDefault();
+		const contactForm = document.querySelector("#contact-form-section");
+		contactForm?.scrollIntoView({ behavior: "smooth" });
+		contactFormRef?.current?.setPurpose(purpose);
+	};
 
 	return (
 		<ParallaxProvider>
@@ -35,38 +41,15 @@ export default function Home() {
 				className="fixed top-20 -right-40 z-0 opacity-10"
 				loader={customLoader}
 			/>
-			<Navbar
-				contactFormRef={
-					contactFormRef as unknown as React.RefObject<HTMLFormElement>
-				}
-			/>
+			<Navbar handlePurposeClick={handlePurposeClick} />
 			<main>
 				<div className="bg-[#eaeaea]">
-					<Link
-						href="https://t.me/uzfranchiseassociation"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="fixed bottom-8 right-8 w-14 h-14  rounded-full flex items-center justify-center shadow-lg transition-colors duration-300 z-50"
-						aria-label="Contact us on Telegram"
-					>
-						<Image
-							src="/telegram-icon.png"
-							alt="Telegram"
-							width={32}
-							height={32}
-							className="w-16 h-16"
-							loader={customLoader}
-						/>
-					</Link>
+					<Stickers />
 
 					<section className="flex pt-10 pb-10 rounded-b-[100px] justify-center w-screen">
-						<div className="flex flex-col min-[950px]:flex-row items-center lg:items-start justify-between gap-8 w-[95%] md:w-[90%] max-w-7xl">
-							<HomePageTopText
-								contactFormRef={
-									contactFormRef as unknown as React.RefObject<HTMLFormElement>
-								}
-							/>
-							<div className="lg:flex-shrink-0 w-full lg:w-auto">
+						<div className="flex flex-col min-[950px]:flex-row items-center justify-between gap-8 w-[95%] md:w-[90%] max-w-7xl">
+							<HomePageTopText handlePurposeClick={handlePurposeClick} />
+							<div className="lg:flex-shrink-0 w-full lg:w-[50%] h-full flex justify-center items-center">
 								<HomePageVideo />
 							</div>
 						</div>
@@ -78,7 +61,7 @@ export default function Home() {
 						id="home-page-text-cards-section"
 						className="flex justify-center w-screen mt-2"
 					>
-						<HomePageTextCards />
+						<HomePageTextCards handlePurposeClick={handlePurposeClick} />
 					</section>
 					<section className="flex justify-center w-screen mt-20 min-[1590px]:ml-[2vw] pb-10">
 						<div className="flex min-[950px]:flex-row flex-col items-center justify-center gap-8 min-[950px]:w-[80%] w-[90%] min-[950px]:mt-4 -mt-12">

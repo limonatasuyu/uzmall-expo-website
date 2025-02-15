@@ -24,7 +24,7 @@
     "email": "Электронная почта",
     "purpose": "Цель участия",
     "message": "Сообщение",
-    "submit": "Получить билет",
+    "submit": "Оставить заявку",
     "purposes": {
       "visitor": "быть посетителем выставки (бесплатно)",
       "sell": "продать свою коммерческую недвижимость",
@@ -117,7 +117,7 @@
       "followUs": "Следите За Нами"
     },
     "menu": {
-      "uzmallexpo": "UzMall Expo",
+      "uzmallexpo": "UzMallEXPO",
       "contact": "Свяжитесь с нами"
     },
     "quickLinks": {
@@ -168,7 +168,7 @@
   "HomePageTopText": {
     "date": "28-29 мая 2025г.",
     "participantButton": "Стать участником!",
-    "visitorButton": "стать посетителем!",
+    "visitorButton": "Cтать посетителем!",
     "description": "Первый в Центральной Азии инвестиционный выставка-форум коммерческой недвижимости"
   },
   "HomePageVideoText": {
@@ -203,7 +203,7 @@
     "participants": "Участникам",
     "visitors": "Посетителям",
     "program": "Программа и спикеры",
-    "awards": "Cre Awards",
+    "awards": "CRE AWARDS",
     "contactus": "Свяжитесь с нами"
   },
   "HomePage": {

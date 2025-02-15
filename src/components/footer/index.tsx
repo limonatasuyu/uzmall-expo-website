@@ -1,15 +1,16 @@
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, type LucideIcon } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Calendar } from 'lucide-react'
 
 interface FooterSectionProps {
-  title: string
+  title?: string
   items: { label: string; href: string }[]
 }
 
 function FooterSection({ title, items }: FooterSectionProps) {
   return (
     <div>
-      <h3 className="text-[#15bacc] font-semibold text-lg mb-4">{title}</h3>
+      {title && <h3 className="text-[#15bacc] font-semibold text-lg mb-4">{title}</h3>}
       <ul className="space-y-2">
         {items.map((item, index) => (
           <li key={index as number}>
@@ -31,7 +32,7 @@ interface FooterSocialLinkProps {
 function FooterSocialLink({ icon: Icon, href }: FooterSocialLinkProps) {
   return (
     <a href={href} className="hover:text-[#15bacc] transition-colors">
-      <Icon className="w-6 h-6" />
+      <Icon className="w-8 h-8" />
     </a>
   )
 }
@@ -58,6 +59,7 @@ export function Footer() {
 
   const contactInfo = [
     { icon: MapPin, text: t('Footer.contact.address') },
+    { icon: Calendar, text: t('Footer.contact.date') },
     { icon: Phone, text: t('Footer.contact.phone') },
     { icon: Mail, text: t('Footer.contact.email') },
   ]
@@ -75,7 +77,7 @@ export function Footer() {
             ))}
           </div>
           <FooterSection title={t('Footer.sections.menu')} items={menuItems} />
-          <FooterSection title={t('Footer.sections.quickLinks')} items={quickLinks} />
+          <FooterSection items={quickLinks} />
           <div>
             <h3 className="text-[#15bacc] font-semibold text-lg mb-4">{t('Footer.sections.followUs')}</h3>
             <div className="flex gap-4">

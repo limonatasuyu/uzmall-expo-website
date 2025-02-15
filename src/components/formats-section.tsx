@@ -52,8 +52,7 @@ export function FormatsSection() {
 							<ContactFormModal 
 								trigger={
 									<Button
-										type="button"
-										className="mt-4 px-8 py-4 bg-[#15bacc] text-white rounded-md hover:bg-[#095d66] transition-colors"
+										className="mt-4 px-8 py-4 bg-[#15bacc] text-white rounded-md hover:bg-[#095d66] transition-colors relative z-10"
 									>
 										{t('FormatsSection.moreInfo.button')}
 									</Button>

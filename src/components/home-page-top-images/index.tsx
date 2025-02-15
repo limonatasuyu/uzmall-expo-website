@@ -33,7 +33,7 @@ export default function HomePageTopImages() {
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center gap-4 p-4 h-[600px] max-w-1/2 overflow-hidden relative">
+    <div className="flex flex-col justify-center items-center gap-0 p-4 h-[600px] max-w-1/2 overflow-hidden relative">
       {photos.map((photo, index) => (
         <div 
           key={index as number} 
