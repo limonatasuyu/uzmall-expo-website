@@ -1,6 +1,6 @@
 "use client";
-import { ContactForm, type ContactFormRef } from "../contact-form";
-import { ContactFormSlider } from "../contact-form-slider";
+import { ContactForm, type ContactFormRef } from "../layout/contact-form";
+import { ContactFormSlider } from "./home-page-contact-form-slider";
 import { Parallax } from "react-scroll-parallax";
 export const ParallaxContact = ({contactFormRef}: {contactFormRef: React.RefObject<HTMLFormElement>}) => {
   return (

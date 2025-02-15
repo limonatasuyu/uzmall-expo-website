@@ -3,13 +3,13 @@
 import { Building2, Coffee, Home, ShoppingBag, Dumbbell } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-type BrandCategory = {
+type HomePageBrandCategory = {
   title: string
   brands: string[]
   icon: React.ReactNode
 }
 
-const brandCategories: BrandCategory[] = [
+const homePageBrandCategories: HomePageBrandCategory[] = [
   {
     title: 'Fashion и аксессуары: 200+ брендов',
     brands: ['Zara', 'H&M', 'Massimo Dutti', 'LC Waikiki', 'DeFacto', 'Terranova', 'New Yorker', 'Lacoste', 'Levi\'s', 'Gant', 'Tommy Hilfiger', 'Calvin Klein', 'Boss', 'Adidas', 'Nike', 'Li-ning', 'Skechers', 'Спортмастер'],
@@ -46,7 +46,7 @@ export function BrandsSection() {
         </h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {brandCategories.map((category, index) => (
+          {homePageBrandCategories.map((category, index) => (
             <div 
               key={index as number}
               className={cn(

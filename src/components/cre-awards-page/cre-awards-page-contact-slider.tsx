@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { customLoader } from '@/lib/customLoader';
 const images = [
-  "/cre-awards-1.png",
-  "/cre-awards-2.png",
+  "/cre-awards-contact-form-1.png",
+  "/cre-awards-contact-form-2.png",
 ]
 
 export function CreAwardsFormSlider() {

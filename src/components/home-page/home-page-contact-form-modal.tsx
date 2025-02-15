@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { ContactForm } from "./contact-form";
-import type { ContactFormRef } from "./contact-form";
+import { ContactForm } from "../layout/contact-form";
+import type { ContactFormRef } from "../layout/contact-form";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import React from "react";

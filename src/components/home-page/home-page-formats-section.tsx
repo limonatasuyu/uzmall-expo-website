@@ -1,8 +1,8 @@
 "use client";
 
 import { Edit3, Key, Mic2, Info } from "lucide-react";
-import { ContactFormModal } from "./contact-form-modal";
-import { Button } from "./ui/button";
+import { ContactFormModal } from "./home-page-contact-form-modal";
+import { Button } from "../ui/button";
 import { useTranslation } from "react-i18next";
 
 export function FormatsSection() {

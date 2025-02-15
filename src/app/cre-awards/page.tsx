@@ -2,11 +2,11 @@
 import Image from "next/image";
 import { customLoader } from "@/lib/customLoader";
 import { useTranslation } from "react-i18next";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { CREAwardsForm } from "@/components/cre-awards-form";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { CREAwardsForm } from "@/components/cre-awards-page/cre-awards-page-form";
 import { ParallaxProvider } from "react-scroll-parallax";
-import { CreAwardsFormSlider } from "@/components/cre-awards-form-slider";
+import { CreAwardsFormSlider } from "@/components/cre-awards-page/cre-awards-page-contact-slider";
 
 export default function CREAwardsPage() {
 	const { t } = useTranslation();

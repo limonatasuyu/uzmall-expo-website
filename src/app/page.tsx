@@ -1,26 +1,27 @@
 "use client";
-import { HomePageTopImages } from "@/components/home-page-top-images";
-import { HomePageTopText } from "@/components/home-page-top-text";
-import { HomePageParagraph } from "@/components/home-page-paragraph";
-import { HomePageTextCards } from "@/components/home-page-text-cards";
-import { HomePageVideoText } from "@/components/home-page-video-text";
-import { HomePageVideo } from "@/components/home-page-video";
-import { HomePageBottomTextCards } from "@/components/home-page-bottom-text-cards";
-import type { ContactFormRef } from "@/components/contact-form";
-import { Footer } from "@/components/footer";
+import { HomePageTopImages } from "@/components/home-page/home-page-top-images";
+import { HomePageTopText } from "@/components/home-page/home-page-top-text";
+import { HomePageParagraph } from "@/components/home-page/home-page-paragraph";
+import { HomePageTextCards } from "@/components/home-page/home-page-text-cards";
+import { HomePageVideoText } from "@/components/home-page/home-page-video-text";
+import { HomePageVideo } from "@/components/home-page/home-page-video";
+import { HomePageBottomTextCards } from "@/components/home-page/home-page-bottom-text-cards";
+import type { ContactFormRef } from "@/components/layout/contact-form";
+import { Footer } from "@/components/layout/footer";
 import { useRef } from "react";
 import Image from "next/image";
 import { customLoader } from "@/lib/customLoader";
-import { Navbar } from "@/components/navbar";
-import { HomePageSpeakers } from "@/components/home-page-speakers";
-import { ParallaxContact } from "@/components/parallax-contact";
-import { ParallaxPartners } from "@/components/parallax-partners";
-import { MapSection } from "@/components/map-section";
+import { Navbar } from "@/components/layout/navbar";
+import { HomePageSpeakers } from "@/components/home-page/home-page-speakers";
+import { ParallaxContact } from "@/components/home-page/home-page-contact";
+import { ParallaxPartners } from "@/components/home-page/home-page-partners";
+import { MapSection } from "@/components/home-page/home-page-map-section";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { Parallax } from "react-scroll-parallax";
-import { FormatsSection } from "@/components/formats-section";
-import { BrandsSection } from "@/components/brands-section";
-import { Stickers } from "@/components/stickers";
+import { FormatsSection } from "@/components/home-page/home-page-formats-section";
+import { BrandsSection } from "@/components/home-page/home-page-brands-section";
+import { Stickers } from "@/components/layout/stickers";
+
 export default function Home() {
 	const contactFormRef = useRef<ContactFormRef>(null);
 

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { customLoader } from "@/lib/customLoader";
 import { Button } from "@/components/ui/button";
-import { LanguageSwitcher } from "@/components/language-switcher";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { useTranslation } from "react-i18next";
 
 import {

@@ -1,7 +1,7 @@
 "use client";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { HomePageSpeakers } from "@/components/home-page-speakers";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { HomePageSpeakers } from "@/components/home-page/home-page-speakers";
 
 export default function CREAwardsPage() {
 	return (

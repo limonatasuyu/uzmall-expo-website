@@ -11,7 +11,7 @@ import { useState, forwardRef, useImperativeHandle } from "react";
 import { countryCodes } from "@/data/country-codes";
 import { useTranslation } from "react-i18next";
 
-export const contactFormPurposes = ["visitor", "sell", "represent", "speaker", "ticket"];
+const contactFormPurposes = ["visitor", "sell", "represent", "speaker", "ticket"];
 
 export interface ContactFormRef {
   setPurpose: (purpose: string) => void;
