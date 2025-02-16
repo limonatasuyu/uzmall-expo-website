@@ -4,18 +4,22 @@ import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { customLoader } from "@/lib/customLoader";
 import Image from "next/image";
+import { useMemo } from "react";
 
-interface HomePageTopTextProps {
+interface HomePageTopLeftProps {
 	handlePurposeClick: (e: React.MouseEvent, purpose: string) => void;
 }
 
-function HomePageTopText({ handlePurposeClick }: HomePageTopTextProps) {
+function HomePageTopLeft({ handlePurposeClick }: HomePageTopLeftProps) {
 	const { t, i18n } = useTranslation();
 
 	const englishBannerPath = "/banner-en.png";
 	const russianBannerPath = "/banner-ru.png";
 
-	const bannerPath = i18n.language === 'ru' ? russianBannerPath : englishBannerPath;
+	const bannerPath = useMemo(
+		() => (i18n.language === "ru" ? russianBannerPath : englishBannerPath),
+		[i18n.language],
+	);
 
 	return (
 		<div className="w-full lg:max-w-[50vw] flex flex-col -mt-20 min-[950px]:-mt-16">
@@ -35,17 +39,17 @@ function HomePageTopText({ handlePurposeClick }: HomePageTopTextProps) {
 					onClick={(e: React.MouseEvent) => handlePurposeClick(e, "represent")}
 					className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-6 sm:py-8 bg-[#0d8995] text-white font-semibold hover:from-[#0d8995] hover:to-[#15bacc] transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg"
 				>
-					{t("HomePageTopText.participantButton")}
+					{t("HomePageTopLeft.participantButton")}
 				</Button>
 				<Button
 					onClick={(e: React.MouseEvent) => handlePurposeClick(e, "visitor")}
 					className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-6 sm:py-8 bg-[#15bacc] text-white font-semibold hover:from-[#0d8995] hover:to-[#15bacc] transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg"
 				>
-					{t("HomePageTopText.visitorButton")}
+					{t("HomePageTopLeft.visitorButton")}
 				</Button>
 			</div>
 		</div>
 	);
 }
 
-export { HomePageTopText };
+export { HomePageTopLeft };

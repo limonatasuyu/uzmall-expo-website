@@ -49,7 +49,7 @@ function NavbarItem({
 function NavbarIcon() {
 	return (
 		<NavigationMenuItem>
-			<NavigationMenuLink href={process.env.NODE_ENV === 'development' ? "/" : "/wp-content/uploads/next/index.html"}>
+			<NavigationMenuLink href="/">
 				<Image
 					src="/logo-uzmall.png"
 					alt="logo"
@@ -86,11 +86,11 @@ function Navbar({
 		},
 		{
 			title: "Navbar.program",
-			href: process.env.NODE_ENV === 'development' ? "/speakers" : "/wp-content/uploads/next/speakers.html",
+			href: "/speakers",
 		},
 		{
 			title: "Navbar.awards",
-			href: process.env.NODE_ENV === 'development' ? "/cre-awards" : "/wp-content/uploads/next/cre-awards.html",
+			href: "/cre-awards",
 		},
 		{
 			title: "Navbar.contactus",

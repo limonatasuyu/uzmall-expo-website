@@ -157,11 +157,9 @@
       "person3": "Test Text 3"
     }
   },
-  "HomePageTopText": {
-    "date": "May 28-29, 2025",
+  "HomePageTopLeft": {
     "participantButton": "Become a participant!",
-    "visitorButton": "Become a visitor!",
-    "description": "The Uzmall Awards is presented for significant contributions and successful activities in the commercial real estate and retail market in Uzbekistan."
+    "visitorButton": "Become a visitor!"
   },
   "HomePageVideoText": {
     "items": {

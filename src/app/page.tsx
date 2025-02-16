@@ -1,10 +1,10 @@
 "use client";
 import { HomePageTopImages } from "@/components/home-page/home-page-top-images";
-import { HomePageTopText } from "@/components/home-page/home-page-top-text";
+import { HomePageTopLeft } from "@/components/home-page/home-page-top-left";
+import { HomePageTopRight } from "@/components/home-page/home-page-top-right";
 import { HomePageParagraph } from "@/components/home-page/home-page-paragraph";
 import { HomePageTextCards } from "@/components/home-page/home-page-text-cards";
 import { HomePageVideoText } from "@/components/home-page/home-page-video-text";
-import { HomePageVideo } from "@/components/home-page/home-page-video";
 import { HomePageBottomTextCards } from "@/components/home-page/home-page-bottom-text-cards";
 import type { ContactFormRef } from "@/components/layout/contact-form";
 import { Footer } from "@/components/layout/footer";
@@ -49,10 +49,8 @@ export default function Home() {
 
 					<section className="flex pt-10 pb-10 rounded-b-[100px] justify-center w-screen">
 						<div className="flex flex-col min-[950px]:flex-row items-center justify-between gap-8 w-[95%] md:w-[90%] max-w-7xl">
-							<HomePageTopText handlePurposeClick={handlePurposeClick} />
-							<div className="lg:flex-shrink-0 w-full lg:w-[50%] h-full flex justify-center items-center">
-								<HomePageVideo />
-							</div>
+							<HomePageTopLeft handlePurposeClick={handlePurposeClick} />
+							<HomePageTopRight />
 						</div>
 					</section>
 					<section className="flex justify-center w-screen mt-24">

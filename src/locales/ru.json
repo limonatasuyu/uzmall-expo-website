@@ -165,11 +165,9 @@
       "person3": "Тестовый текст 3"
     }
   },
-  "HomePageTopText": {
-    "date": "28-29 мая 2025г.",
+  "HomePageTopLeft": {
     "participantButton": "Стать участником!",
-    "visitorButton": "Cтать посетителем!",
-    "description": "Первый в Центральной Азии инвестиционный выставка-форум коммерческой недвижимости"
+    "visitorButton": "Cтать посетителем!"
   },
   "HomePageVideoText": {
     "items": {
