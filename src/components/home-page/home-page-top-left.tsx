@@ -13,20 +13,27 @@ interface HomePageTopLeftProps {
 function HomePageTopLeft({ handlePurposeClick }: HomePageTopLeftProps) {
 	const { t, i18n } = useTranslation();
 
-	const englishBannerPath = "/banner-en.png";
-	const russianBannerPath = "/banner-ru.png";
+	// !! TODO: Add the correct paths for the banners when the banners are added
+	const englishTextBannerPath = "/home-page-top-text.png";
+	const russianTextBannerPath = "/home-page-top-text.png";
 
-	const bannerPath = useMemo(
-		() => (i18n.language === "ru" ? russianBannerPath : englishBannerPath),
+	const englishDateBannerPath = "/event-date.png";
+	const russianDateBannerPath = "/event-date.png";
+
+	const bannerPaths = useMemo(
+		() => ({
+			text: i18n.language === "ru" ? russianTextBannerPath : englishTextBannerPath,
+			date: i18n.language === "ru" ? russianDateBannerPath : englishDateBannerPath,
+		}),
 		[i18n.language],
 	);
 
 	return (
-		<div className="w-full lg:max-w-[50vw] flex flex-col -mt-20 min-[950px]:-mt-16">
-			<div className="relative w-full h-auto aspect-[1000/600] mb-6">
+		<div className="w-full lg:max-w-[50vw] flex flex-col">
+			<div className="relative w-full h-auto aspect-[1000/600]">
 				<Image
-					src={bannerPath}
-					alt="UzMall Logo"
+					src={bannerPaths.text}
+					alt="UzMall Paragraph"
 					width={1100}
 					height={1100}
 					className="w-full h-full object-contain [filter:brightness(0)_saturate(100%)_invert(35%)_sepia(85%)_saturate(395%)_hue-rotate(140deg)_brightness(92%)_contrast(101%)]"
@@ -34,7 +41,7 @@ function HomePageTopLeft({ handlePurposeClick }: HomePageTopLeftProps) {
 					priority
 				/>
 			</div>
-			<div className="flex flex-col sm:flex-row items-center gap-4 min-[550px]:-mt-20 -mt-16">
+			<div className="flex flex-col sm:flex-row items-center gap-4">
 				<Button
 					onClick={(e: React.MouseEvent) => handlePurposeClick(e, "represent")}
 					className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-6 sm:py-8 bg-[#0d8995] text-white font-semibold hover:from-[#0d8995] hover:to-[#15bacc] transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg"
@@ -48,6 +55,19 @@ function HomePageTopLeft({ handlePurposeClick }: HomePageTopLeftProps) {
 					{t("HomePageTopLeft.visitorButton")}
 				</Button>
 			</div>
+			<div className="relative w-full h-auto aspect-[2/1] -mt-10">
+				<Image
+					src={bannerPaths.date}
+					alt="UzMall Date"
+					width={1100}
+					height={1100}
+					className="w-full h-full object-contain [filter:brightness(0)_saturate(100%)_invert(35%)_sepia(85%)_saturate(395%)_hue-rotate(140deg)_brightness(92%)_contrast(101%)]"
+					loader={customLoader}
+					priority
+				/>
+			</div>
+
+
 		</div>
 	);
 }

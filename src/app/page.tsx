@@ -86,7 +86,7 @@ export default function Home() {
 							</div>
 						</Parallax>
 					</section>
-					<section className="flex justify-center w-screen bg-[#eaeaea]">
+					<section className="flex justify-center bg-[#eaeaea]">
 						<BrandsSection />
 					</section>
 
