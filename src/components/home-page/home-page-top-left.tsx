@@ -29,7 +29,7 @@ function HomePageTopLeft({ handlePurposeClick }: HomePageTopLeftProps) {
 
 	return (
 		<div className="w-full lg:max-w-[50vw] flex flex-col">
-			<div className="relative min-[650px]:w-[90vw] min-[750px]:w-full w-screen h-auto aspect-[1000/300]">
+			<div className="relative w-full h-auto aspect-[1000/300] px-4 sm:px-0">
 				<Image
 					src={bannerPaths.text}
 					alt="UzMall Paragraph"
@@ -40,21 +40,21 @@ function HomePageTopLeft({ handlePurposeClick }: HomePageTopLeftProps) {
 					priority
 				/>
 			</div>
-			<div className="flex flex-col sm:flex-row items-center gap-4 relative inset-0 z-50 min-[650px]:-mt-8 mt-4">
+			<div className="flex flex-col sm:flex-row items-center gap-4 relative z-50 px-4 sm:px-0 mt-4 sm:-mt-8">
 				<Button
 					onClick={(e: React.MouseEvent) => handlePurposeClick(e, "represent")}
-					className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-6 sm:py-8 bg-[#0d8995] text-white font-semibold hover:bg-[#0d8995]/50 transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg"
+					className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-4 sm:py-6 bg-[#0d8995] text-white font-semibold hover:bg-[#0d8995]/50 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
 				>
 					{t("HomePageTopLeft.participantButton")}
 				</Button>
 				<Button
 					onClick={(e: React.MouseEvent) => handlePurposeClick(e, "visitor")}
-					className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-6 sm:py-8 bg-[#15bacc] text-white font-semibold hover:bg-[#15bacc]/50 transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg"
+					className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-4 sm:py-6 bg-[#15bacc] text-white font-semibold hover:bg-[#15bacc]/50 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
 				>
 					{t("HomePageTopLeft.visitorButton")}
 				</Button>
 			</div>
-			<div className="relative w-full h-auto aspect-[2/1] -mt-6 min-[450px]:-mt-10">
+			<div className="relative w-full h-auto aspect-[2/1] -mt-4 sm:-mt-8 px-4 sm:px-0">
 				<Image
 					src={bannerPaths.date}
 					alt="UzMall Date"
@@ -65,8 +65,6 @@ function HomePageTopLeft({ handlePurposeClick }: HomePageTopLeftProps) {
 					priority
 				/>
 			</div>
-
-
 		</div>
 	);
 }
