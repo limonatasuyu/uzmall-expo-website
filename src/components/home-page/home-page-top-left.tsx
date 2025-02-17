@@ -29,7 +29,7 @@ function HomePageTopLeft({ handlePurposeClick }: HomePageTopLeftProps) {
 
 	return (
 		<div className="w-full lg:max-w-[50vw] flex flex-col">
-			<div className="relative min-[650px]:w-full min-[750px]:w-[90vw] w-screen h-auto aspect-[1000/300]">
+			<div className="relative min-[650px]:w-[90vw] min-[750px]:w-full w-screen h-auto aspect-[1000/300]">
 				<Image
 					src={bannerPaths.text}
 					alt="UzMall Paragraph"
