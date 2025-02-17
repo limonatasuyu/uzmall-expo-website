@@ -19,7 +19,7 @@ import { MapSection } from "@/components/home-page/home-page-map-section";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { Parallax } from "react-scroll-parallax";
 import { FormatsSection } from "@/components/home-page/home-page-formats-section";
-import { BrandsSection } from "@/components/home-page/home-page-brands-section";
+import { HomePageTable } from "@/components/home-page/home-page-table";
 import { Stickers } from "@/components/layout/stickers";
 
 export default function Home() {
@@ -47,7 +47,7 @@ export default function Home() {
 				<div className="bg-[#eaeaea]">
 					<Stickers />
 
-					<section className="flex pt-10 pb-10 rounded-b-[100px] justify-center w-screen">
+					<section className="flex pt-2 pb-10 rounded-b-[100px] justify-center w-screen">
 						<div className="flex flex-col min-[950px]:flex-row items-center justify-between gap-8 w-[95%] md:w-[90%] max-w-7xl">
 							<HomePageTopLeft handlePurposeClick={handlePurposeClick} />
 							<HomePageTopRight />
@@ -69,25 +69,28 @@ export default function Home() {
 						</div>
 					</section>
 					<section className="flex justify-center w-screen">
-						<div className="w-full h-full rounded-b-[100px]">
+						<div className="w-full h-fit rounded-b-[100px]">
 							<HomePageBottomTextCards />
 						</div>
 					</section>
 					<section
 						id="home-page-speakers-section"
-						className="flex justify-center w-screen bg-[#eaeaea]"
+						className="flex justify-center w-screen bg-[#eaeaea] md:max-h-[90vh] overflow-hidden"
 					>
 						<Parallax
-							translateY={[10, -15]}
-							className="w-full flex justify-center rounded-t-[100px] bg-gradient-to-b from-[#eaeaea] to-white mt-4 "
+							translateY={[5, -5]}
+							className="w-full flex justify-center rounded-t-[50px] md:rounded-t-[100px] bg-gradient-to-b from-[#eaeaea] to-white"
+							disabled={typeof window !== 'undefined' && window.innerWidth < 768}
 						>
-							<div className="w-[90%] max-w-5xl mb-12">
+							<div className="w-[95%] md:w-[90%] max-w-5xl pt-2 md:pt-4 pb-8 md:pb-12">
 								<HomePageSpeakers />
 							</div>
 						</Parallax>
 					</section>
-					<section className="flex justify-center bg-[#eaeaea]">
-						<BrandsSection />
+					<section className="flex justify-center w-screen bg-[#eaeaea] h-fit px-4 md:px-0">
+						<div className="w-full max-w-9xl">
+							<HomePageTable />
+						</div>
 					</section>
 
 					<section

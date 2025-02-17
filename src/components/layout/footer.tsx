@@ -47,7 +47,7 @@ interface FooterSocialLinkProps {
 function FooterSocialLink({ icon: Icon, href }: FooterSocialLinkProps) {
 	return (
 		<a href={href} className="hover:text-[#15bacc] transition-colors">
-			<Icon className="w-8 h-8" />
+			<Icon className="w-16 h-16" />
 		</a>
 	);
 }
@@ -73,17 +73,20 @@ export function Footer() {
 	];
 
 	const contactInfo = [
-		{ icon: MapPin, text: t("Footer.contact.address") },
-		{ icon: Calendar, text: t("Footer.contact.date") },
 		{ icon: Phone, text: t("Footer.contact.phone") },
 		{ icon: Mail, text: t("Footer.contact.email") },
+	];
+
+	const dateAndVenue = [
+		{ icon: Calendar, text: t("Footer.date-and-venue.date") },
+		{ icon: MapPin, text: t("Footer.date-and-venue.address") },
 	];
 
 	return (
 		<footer className="bg-white text-[#095d66] py-12">
 			<div className="container mx-auto px-4">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <Image
+					<Image
 						src="/logo-1-cropped.png"
 						alt="UzMall Logo"
 						width={1000}
@@ -92,7 +95,21 @@ export function Footer() {
 						loader={customLoader}
 					/>
 					<div className="space-y-4">
+						<h3 className="text-[#15bacc] font-semibold text-lg mb-4">
+							{t("Footer.sections.contact")}
+						</h3>
 						{contactInfo.map((item, index) => (
+							<div key={index as number} className="flex items-center gap-2">
+								<item.icon className="w-5 h-5" />
+								<span>{item.text}</span>
+							</div>
+						))}
+					</div>
+					<div className="space-y-4">
+						<h3 className="text-[#15bacc] font-semibold text-lg mb-4">
+							{t("Footer.sections.date-and-venue")}
+						</h3>
+						{dateAndVenue.map((item, index) => (
 							<div key={index as number} className="flex items-center gap-2">
 								<item.icon className="w-5 h-5" />
 								<span>{item.text}</span>
@@ -102,7 +119,7 @@ export function Footer() {
 					<FooterSection title={t("Footer.sections.menu")} items={menuItems} />
 					<FooterSection items={quickLinks} />
 					<div>
-						<h3 className="text-[#15bacc] font-semibold text-lg mb-4">
+						<h3 className="text-[#15bacc] font-semibold text-2xl mb-4">
 							{t("Footer.sections.followUs")}
 						</h3>
 						<div className="flex gap-4">

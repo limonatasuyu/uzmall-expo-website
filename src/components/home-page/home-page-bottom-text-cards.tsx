@@ -40,7 +40,7 @@ function HomePageBottomTextCards() {
 	];
 
 	return (
-		<div className="w-full flex justify-center py-20">
+		<div className="w-full flex justify-center py-10">
 			<div className="max-w-7xl mx-auto px-6">
 				<h4 className="text-center text-[#095d66] text-5xl font-bold mb-16">
 					{t("HomePageBottomText.sectionTitle")}

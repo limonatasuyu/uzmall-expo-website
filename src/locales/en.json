@@ -106,7 +106,9 @@
     "sections": {
       "menu": "Menu",
       "quickLinks": "Quick Links",
-      "followUs": "Follow Us"
+      "followUs": "Follow Us",
+      "contact": "Contact",
+      "date-and-venue": "Date and Venue"
     },
     "menu": {
       "uzmallexpo": "UzMallEXPO",
@@ -119,10 +121,15 @@
     },
     "contact": {
       "address": "UZBEKISTAN/TASHKENT",
+      "date": "March 28-29, 2025",
       "phone": "+998 90 806 58 66",
       "email": "info@uzmallexpo.uz"
     },
-    "copyright": "© 2025 uzmallEXPO. All rights reserved."
+    "date-and-venue": {
+      "date": "May 28-29, 2025",
+      "address": "UZBEKISTAN/TASHKENT"
+    },
+    "copyright": "© 2025 UzMallEXPO. All rights reserved."
   },
   "HomePagePartners": {
     "title": "Information Partners",
@@ -152,9 +159,7 @@
   },
   "HomePageTopImages": {
     "images": {
-      "person1": "Test Text 1",
-      "person2": "Test Text 2",
-      "person3": "Test Text 3"
+      "stats": "Uzmall EXPO 2025 Exhibition Statistics Event Business Management Visitors Visit Us Participants Participant"
     }
   },
   "HomePageTopLeft": {

@@ -19,16 +19,12 @@ export default function HomePageTopImages() {
 
   const photos: ImageCard[] = [
     {
-      title: t('HomePageTopImages.images.person1'),
-      imageUrl: '/person-1.jpg',
+      title: t('HomePageTopImages.images.stats'),
+      imageUrl: '/stats-image-1.jpg',
     },
-    //{
-    //  title: t('HomePageTopImages.images.person2'),
-    //  imageUrl: '/person-2.png',
-    //},
     {
-      title: t('HomePageTopImages.images.person3'),
-      imageUrl: '/person-3.jpg',
+      title: t('HomePageTopImages.images.stats'),
+      imageUrl: '/stats-image-2.jpg',
     }
   ];
 

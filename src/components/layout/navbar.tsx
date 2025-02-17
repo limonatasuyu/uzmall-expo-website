@@ -67,13 +67,7 @@ function Navbar({
 }: { handlePurposeClick?: (e: React.MouseEvent, purpose: string) => void }) {
 	const { t } = useTranslation();
 
-
-
 	const navbarItems = [
-		// {
-		//   title: "Navbar.about",
-		//   href: "#home-page-text-cards-section",
-		// },
 		{
 			title: "Navbar.participants",
 			href: "#contact-form-section",
@@ -86,11 +80,15 @@ function Navbar({
 		},
 		{
 			title: "Navbar.program",
-			href: "/speakers",
+			href:
+				process.env.NODE_ENV === "development" ? "/speakers" : "/speakers.html",
 		},
 		{
 			title: "Navbar.awards",
-			href: "/cre-awards",
+			href:
+				process.env.NODE_ENV === "development"
+					? "/cre-awards"
+					: "/cre-awards.html",
 		},
 		{
 			title: "Navbar.contactus",
@@ -151,12 +149,34 @@ function Navbar({
 											{t(item.title)}
 										</a>
 									))}
-									<a
-										href="https://t.me/uzfranchiseassociation"
-										className="font-bold text-[#095d66] hover:text-[#15bacc] bg-white box-shadow-lg w-fit p-2 rounded-full"
-									>
-										Telegram
-									</a>
+									<div className="flex gap-4 items-center">
+										<a
+											href="https://t.me/uzfranchiseassociation"
+											className="font-bold text-[#095d66] hover:text-[#15bacc] bg-white box-shadow-lg w-fit p-2 rounded-full"
+										>
+											<Image
+												src="/telegram-icon.png"
+												alt="Telegram"
+												width={32}
+												height={32}
+												className="w-16 h-16"
+												loader={customLoader}
+											/>
+										</a>
+										<a
+											href="https://wa.me/qr/UX6IXITIUGR7A1"
+											className="font-bold text-[#095d66] hover:text-[#15bacc] bg-white box-shadow-lg w-fit p-2 rounded-full"
+										>
+											<Image
+												src="/whatsapp-icon.png"
+												alt="WhatsApp"
+												width={32}
+												height={32}
+												className="w-10 h-10"
+												loader={customLoader}
+											/>
+										</a>
+									</div>
 								</div>
 							</SheetContent>
 						</Sheet>

@@ -19,6 +19,7 @@ export function MapSection() {
 					loading="lazy"
 					referrerPolicy="no-referrer-when-downgrade"
 					title="Uzmall Expo Map"
+					className="relative inset-0 z-50"
 				/>
 			</div>
 			<div className="text-center">

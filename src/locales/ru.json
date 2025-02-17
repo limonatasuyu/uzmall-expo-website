@@ -114,7 +114,9 @@
     "sections": {
       "menu": "Меню",
       "quickLinks": "Быстрые Ссылки",
-      "followUs": "Следите За Нами"
+      "followUs": "Следите За Нами",
+      "contact": "Контакты",
+      "date-and-venue": "Дата и место проведения"
     },
     "menu": {
       "uzmallexpo": "UzMallEXPO",
@@ -126,11 +128,16 @@
       "cookies": "Политика использования файлов cookie"
     },
     "contact": {
-      "address": "UZBEKISTAN/TASHKENT",
+      "address": "УЗБЕКИСТАН/ТАШКЕНТ",
+      "date": "28-29 мая 2025",
       "phone": "+998 90 806 58 66",
       "email": "info@uzmallexpo.uz"
     },
-    "copyright": "© 2025 uzmallEXPO. Все права защищены."
+    "date-and-venue": {
+      "date": "28-29 марта 2025",
+      "address": "УЗБЕКИСТАН/ТАШКЕНТ"
+    },
+    "copyright": "© 2025 UzMallEXPO. Все права защищены."
   },
   "HomePagePartners": {
     "title": "Информационные партнеры",
@@ -160,9 +167,7 @@
   },
   "HomePageTopImages": {
     "images": {
-      "person1": "Тестовый текст 1",
-      "person2": "Тестовый текст 2",
-      "person3": "Тестовый текст 3"
+      "stats": "Uzmall EXPO 2025 Статистика мероприятия Бизнес-Менеджмент Посетители Посетить нас Участники Участник"
     }
   },
   "HomePageTopLeft": {
