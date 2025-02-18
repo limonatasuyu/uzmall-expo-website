@@ -6,7 +6,7 @@ import { customLoader } from "@/lib/customLoader";
 
 function Stickers() {
 	return (
-		<div className="fixed flex gap-4 z-50 transition-all duration-300 bottom-8 right-16">
+		<div className="fixed flex flex-col gap-4 z-50 transition-all duration-300 bottom-8 right-8">
 			<Link
 				href="https://wa.me/qr/UX6IXITIUGR7A1"
 				target="_blank"

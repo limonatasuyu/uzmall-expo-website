@@ -29,18 +29,18 @@ function HomePageTopLeft({ handlePurposeClick }: HomePageTopLeftProps) {
 
 	return (
 		<div className="w-full lg:max-w-[50vw] flex flex-col">
-			<div className="relative w-full h-auto aspect-[1000/300] px-4 sm:px-0">
+			<div className="relative w-screen sm:w-full h-auto aspect-[1000/300] px-4 sm:px-0">
 				<Image
 					src={bannerPaths.text}
 					alt="UzMall Paragraph"
 					width={1100}
 					height={500}
-					className="w-full h-full object-contain [filter:brightness(0)_saturate(100%)_invert(35%)_sepia(85%)_saturate(395%)_hue-rotate(140deg)_brightness(92%)_contrast(101%)]"
+					className="w-full h-auto object-contain [filter:brightness(0)_saturate(100%)_invert(35%)_sepia(85%)_saturate(395%)_hue-rotate(140deg)_brightness(92%)_contrast(101%)]"
 					loader={customLoader}
 					priority
 				/>
 			</div>
-			<div className="flex flex-col sm:flex-row items-center gap-4 relative z-50 px-4 sm:px-0 mt-4 sm:-mt-8">
+			<div className="flex flex-col sm:flex-row items-center gap-4 relative z-50 px-4 sm:px-0 mt-1 sm:-mt-8">
 				<Button
 					onClick={(e: React.MouseEvent) => handlePurposeClick(e, "represent")}
 					className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-4 sm:py-6 bg-[#0d8995] text-white font-semibold hover:bg-[#0d8995]/50 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"

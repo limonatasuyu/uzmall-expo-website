@@ -32,9 +32,9 @@ export function ContactFormSlider() {
   }
 
   return (
-    <div className="w-full max-w-[500px] h-full relative rounded-2xl overflow-hidden bg-[#015d66] backdrop-blur-sm">
+    <div className="w-full max-w-[400px] h-full relative rounded-2xl overflow-hidden bg-[#015d66] backdrop-blur-sm">
       {/* Image container */}
-      <div className="relative w-full h-full aspect-[3/4]">
+      <div className="relative w-full h-full aspect-[2/3]">
         <Image
           src={images[currentIndex]}
           alt={`Slide ${currentIndex + 1}`}

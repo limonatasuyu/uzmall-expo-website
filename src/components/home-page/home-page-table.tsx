@@ -147,20 +147,20 @@ export function HomePageTable() {
 						title={brandData.fashion.title}
 						subtitle={brandData.fashion.subtitle}
 						brands={brandData.fashion.brands}
-						imageNumber={1}
+						imageNumber={4}
 					/>
 					<div className="grid grid-cols-2 gap-4">
 						<BrandCategory
 							title={brandData.grocery.title}
 							subtitle={brandData.grocery.subtitle}
 							brands={brandData.grocery.brands}
-							imageNumber={2}
+							imageNumber={3}
 						/>
 						<BrandCategory
 							title={brandData.entertainment.title}
 							subtitle={brandData.entertainment.subtitle}
 							brands={brandData.entertainment.brands}
-							imageNumber={3}
+							imageNumber={8}
 						/>
 					</div>
 				</div>
@@ -171,7 +171,7 @@ export function HomePageTable() {
 						title={brandData.homeAndKids.title}
 						subtitle={brandData.homeAndKids.subtitle}
 						brands={brandData.homeAndKids.brands}
-						imageNumber={4}
+						imageNumber={1}
 					/>
 					<BrandCategory
 						title={brandData.beauty.title}
@@ -186,7 +186,7 @@ export function HomePageTable() {
 					title={brandData.foodAndBeverage.title}
 					subtitle={brandData.foodAndBeverage.subtitle}
 					brands={brandData.foodAndBeverage.brands}
-					imageNumber={3}
+					imageNumber={2}
 				/>
 
 				{/* Hotels and Fitness Section */}

@@ -29,7 +29,7 @@ export default function HomePageTopImages() {
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center gap-0 p-4 h-[600px] max-w-1/2 overflow-hidden relative">
+    <div className="flex flex-col justify-center items-center gap-0 p-4 h-[600px] md:h-[600px] h-[400px] max-w-1/2 overflow-hidden relative">
       {photos.map((photo, index) => (
         <div 
           key={index as number} 
@@ -37,7 +37,8 @@ export default function HomePageTopImages() {
             relative h-full rounded-lg overflow-hidden shadow-lg
             transition-all duration-300 ease-in-out w-[250px]
             ${hoveredIndex === index ? 'w-[300px] z-10' : hoveredIndex !== null ? 'w-[100px]' : ''}
-          `}
+            ${index === 0 ? "hidden md:block" : ""}
+            `}
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -46,7 +47,7 @@ export default function HomePageTopImages() {
             alt={photo.title}
             width={IMAGE_WIDTH}
             height={IMAGE_HEIGHT}
-            className="object-cover h-full w-full"
+            className={"object-cover h-full w-full"}
             loader={customLoader}
           />
           {/*<div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">

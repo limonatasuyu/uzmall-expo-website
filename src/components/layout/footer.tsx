@@ -23,7 +23,7 @@ function FooterSection({ title, items }: FooterSectionProps) {
 			{title && (
 				<h3 className="text-[#15bacc] font-semibold text-lg mb-4">{title}</h3>
 			)}
-			<ul className="space-y-2">
+			<ul className="space-y-2 relative z-50 inset-0">
 				{items.map((item, index) => (
 					<li key={index as number}>
 						<a
@@ -53,17 +53,16 @@ function FooterSocialLink({ icon: Icon, href }: FooterSocialLinkProps) {
 }
 
 const socialLinks = [
-	{ icon: Facebook, href: "#" },
-	{ icon: Twitter, href: "#" },
-	{ icon: Instagram, href: "#" },
+	{ icon: Facebook, href: "https://www.facebook.com/people/UzMalluz/61568829041735/?mibextid=wwXIfr&rdid=yxNce1V0bEpij7Aa&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18pMb1weST%2F%3Fmibextid%3DwwXIfr" },
+	{ icon: Instagram, href: "https://www.instagram.com/uzmall.uz/" },
 ];
 
 export function Footer() {
 	const { t } = useTranslation();
 
 	const menuItems = [
-		{ label: t("Footer.menu.uzmallexpo"), href: "#" },
-		{ label: t("Footer.menu.contact"), href: "#" },
+		{ label: t("Footer.menu.uzmallexpo"), href: "#home-page-top" },
+		{ label: t("Footer.menu.contact"), href: "#contact-form-section" },
 	];
 
 	const quickLinks = [
@@ -86,14 +85,16 @@ export function Footer() {
 		<footer className="bg-white text-[#095d66] py-12">
 			<div className="container mx-auto px-4">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+					<a href="#home-page-top" >
 					<Image
 						src="/logo-1-cropped.png"
 						alt="UzMall Logo"
 						width={1000}
 						height={1000}
-						className="w-full h-[70%] flex self-center object-contain"
+						className="w-fit h-auto sm:h-[70%] flex justify-self-start self-center object-contain"
 						loader={customLoader}
 					/>
+					</a>
 					<div className="space-y-4">
 						<h3 className="text-[#15bacc] font-semibold text-lg mb-4">
 							{t("Footer.sections.contact")}

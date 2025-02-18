@@ -47,7 +47,7 @@ export default function Home() {
 				<div className="bg-[#eaeaea]">
 					<Stickers />
 
-					<section className="flex pt-2 pb-10 rounded-b-[100px] justify-center w-screen">
+					<section id="home-page-top" className="flex pt-2 pb-10 rounded-b-[100px] justify-center w-screen">
 						<div className="flex flex-col min-[950px]:flex-row items-center justify-between gap-8 w-[95%] md:w-[90%] max-w-7xl">
 							<HomePageTopLeft handlePurposeClick={handlePurposeClick} />
 							<HomePageTopRight />

@@ -24,7 +24,7 @@ function NavbarItem({
 	type,
 }: {
 	content: string | React.ReactNode;
-	link: string;
+	link?: string;
 	onClick?: (e: React.MouseEvent) => void;
 	type?: "button" | "link";
 }) {
@@ -32,7 +32,7 @@ function NavbarItem({
 
 	return (
 		<NavigationMenuItem className="max-[1230px]:hidden">
-			<NavigationMenuLink
+			{link ? <NavigationMenuLink
 				href={link}
 				className={cn(
 					"font-bold text-[#095d66] hover:text-[#15bacc] text-lg",
@@ -41,7 +41,7 @@ function NavbarItem({
 				onClick={onClick}
 			>
 				{typeof content === "string" ? t(content) : content}
-			</NavigationMenuLink>
+			</NavigationMenuLink> : <>{content}</>}
 		</NavigationMenuItem>
 	);
 }
@@ -117,16 +117,41 @@ function Navbar({
 						<LanguageSwitcher />
 						<NavbarItem
 							content={
-								<Button className="bg-white hover:bg-[#15bacc] text-[#095d66] rounded-full px-4 py-2">
-									Telegram
-								</Button>
+								
+									<div className="flex gap-4 items-center">
+										<a
+											href="https://t.me/uzfranchiseassociation"
+											className="font-bold text-[#095d66] hover:text-[#15bacc] bg-white box-shadow-lg w-fit rounded-full"
+										>
+											<Image
+												src="/telegram-icon.png"
+												alt="Telegram"
+												width={32}
+												height={32}
+												className="w-12 h-12"
+												loader={customLoader}
+											/>
+										</a>
+										<a
+											href="https://wa.me/qr/UX6IXITIUGR7A1"
+											className="font-bold text-[#095d66] hover:text-[#15bacc] bg-white box-shadow-lg w-fit p-2 rounded-full"
+										>
+											<Image
+												src="/whatsapp-icon.png"
+												alt="WhatsApp"
+												width={32}
+												height={32}
+												className="w-8 h-8"
+												loader={customLoader}
+											/>
+										</a>
+									</div>
 							}
-							link="https://t.me/uzfranchiseassociation"
 						/>
 						<Sheet>
 							<SheetTrigger asChild>
-								<Button className="max-[1230px]:flex hidden ml-4 bg-[#15bacc]/10">
-									<MenuIcon color="#095d66" size={24} />
+								<Button className="max-[1230px]:flex hidden ml-4 bg-[#095d66] hover:bg-[#15bacc] transition-colors">
+									<MenuIcon color="white" size={28} />
 								</Button>
 							</SheetTrigger>
 							<SheetContent>

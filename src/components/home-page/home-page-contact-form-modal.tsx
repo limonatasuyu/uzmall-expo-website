@@ -22,7 +22,7 @@ export function ContactFormModal({
 				<DialogTitle>Contact Form</DialogTitle>
 			</VisuallyHidden>
 			<DialogTrigger asChild>{trigger}</DialogTrigger>
-			<DialogContent className="w-full sm:max-w-[500px] overflow-y-auto">
+			<DialogContent className="w-full sm:max-w-[500px] overflow-y-auto max-h-screen">
 				<div className="mt-8">
 					<ContactForm ref={contactFormRef} />
 				</div>
