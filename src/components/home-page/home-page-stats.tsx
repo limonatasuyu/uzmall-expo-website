@@ -4,7 +4,7 @@ import Image from "next/image"
 import { customLoader } from "@/lib/customLoader";
 import { useTranslation } from 'react-i18next';
 
-function HomePageVideoText() {
+function HomePageStats() {
   const { t } = useTranslation();
 
   const contents = [
@@ -37,8 +37,8 @@ function HomePageVideoText() {
   return (
     <div className="self-center min-[950px]:max-w-[80%] grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/5 rounded-xl backdrop-blur-sm">
       {contents.map((content) => {
-        const boldText = t(`HomePageVideoText.items.${content.key}.boldText`);
-        const thinText = t(`HomePageVideoText.items.${content.key}.thinText`);
+        const boldText = t(`HomePageStatsText.items.${content.key}.boldText`);
+        const thinText = t(`HomePageStatsText.items.${content.key}.thinText`);
 
         return (
           <div 
@@ -71,4 +71,4 @@ function HomePageVideoText() {
   );
 }
 
-export { HomePageVideoText };
+export { HomePageStats };

@@ -4,7 +4,6 @@ import {
 	Mail,
 	MapPin,
 	Phone,
-	Twitter,
 	type LucideIcon,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -84,14 +83,14 @@ export function Footer() {
 	return (
 		<footer className="bg-white text-[#095d66] py-12">
 			<div className="container mx-auto px-4">
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 					<a href="#home-page-top" >
 					<Image
 						src="/logo-1-cropped.png"
 						alt="UzMall Logo"
 						width={1000}
 						height={1000}
-						className="w-fit h-auto sm:h-[70%] flex justify-self-start self-center object-contain"
+						className="w-fit min-[640px]:w-full h-auto sm:h-[70%] flex justify-self-start self-center object-contain"
 						loader={customLoader}
 					/>
 					</a>

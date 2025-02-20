@@ -120,7 +120,7 @@ function Navbar({
 								
 									<div className="flex gap-4 items-center">
 										<a
-											href="https://t.me/uzfranchiseassociation"
+											href="https://t.me/uzmallexpo"
 											className="font-bold text-[#095d66] hover:text-[#15bacc] bg-white box-shadow-lg w-fit rounded-full"
 										>
 											<Image
@@ -176,7 +176,7 @@ function Navbar({
 									))}
 									<div className="flex gap-4 items-center">
 										<a
-											href="https://t.me/uzfranchiseassociation"
+											href="https://t.me/uzmallexpo"
 											className="font-bold text-[#095d66] hover:text-[#15bacc] bg-white box-shadow-lg w-fit p-2 rounded-full"
 										>
 											<Image

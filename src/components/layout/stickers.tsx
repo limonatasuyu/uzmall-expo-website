@@ -24,7 +24,7 @@ function Stickers() {
 				/>
 			</Link>
 			<Link
-				href="https://t.me/uzfranchiseassociation"
+				href="https://t.me/uzmallexpo"
 				target="_blank"
 				rel="noopener noreferrer"
 				className="w-14 h-14  rounded-full flex items-center justify-center shadow-lg transition-colors duration-300 z-50"

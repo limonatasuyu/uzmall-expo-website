@@ -1,8 +1,7 @@
 {
-  "common": {
-    "learnMore": "Learn More",
-    "visitUs": "Visit Us"
-  },
+  "become-a-participant": "Become A Participant", 
+  "become-a-visitor": "Become a visitor!", 
+  "home-page-paragraph": "Brings together players in the commercial and mixed-use real estate market, investments, management and operations, consulting, retail, leasing, technology and services for these sectors.",
   "HomePageSpeakers": {
     "title": "Speakers",
     "speaker1": {
@@ -39,7 +38,7 @@
       "phoneInvalid": "Please enter a valid phone number"
     }
   },
-  "HomePageBottomText": {
+  "HomePageTextCards": {
     "sectionTitle": "Exhibition sections and participants",
     "sections": {
       "development": {
@@ -98,10 +97,6 @@
       }
     }
   },
-  "HomePageParagraph": {
-    "title": "UzMall",
-    "description": "Brings together players in the commercial and mixed-use real estate market, investments, management and operations, consulting, retail, leasing, technology and services for these sectors."
-  },
   "Footer": {
     "sections": {
       "menu": "Menu",
@@ -135,7 +130,7 @@
     "title": "Information Partners",
     "partnerLogoAlt": "Partner logo"
   },
-  "HomePageTextCards": {
+  "HomePageButtonCards": {
     "exhibition": {
       "title": "Largest Industry Exhibition in Central Asia",
       "description": "For commercial real estate and retail, bringing together 100+ participants, 500+ brands and 9000+ visitors",
@@ -157,16 +152,12 @@
       "buttonText": "Go"
     }
   },
-  "HomePageTopImages": {
+  "HomePageStatImages": {
     "images": {
       "stats": "Uzmall EXPO 2025 Exhibition Statistics Event Business Management Visitors Visit Us Participants Participant"
     }
   },
-  "HomePageTopLeft": {
-    "participantButton": "Become a participant!",
-    "visitorButton": "Become a visitor!"
-  },
-  "HomePageVideoText": {
+  "HomePageStatsText": {
     "items": {
       "developers": {
         "boldText": "6000+",
@@ -261,7 +252,6 @@
       "description": "You will be able to speak to an audience of 150-200 people, announce your company, your products and services, and establish new contacts."
     },
     "moreInfo": {
-      "title": "Learn More",
       "description": "The full list and details about collaboration formats can be obtained from the manager by submitting an application.",
       "button": "Submit Application"
     }

@@ -1,107 +1,68 @@
-import Link from "next/link";
-import { Building2, Users, Presentation, Trophy } from "lucide-react";
-import { useTranslation } from "react-i18next";
+"use client";
 
-function TextCards({
+import { useTranslation } from "react-i18next";
+import { Code2, Store, Utensils, Gamepad2, Briefcase, Cpu } from "lucide-react";
+
+function HomePageTextCard({
 	title,
-	description,
-	link,
-	icon: Icon,
-	buttonText,
-	buttonOnClick,
-}: {
-	title: string;
-	description: string;
-	link: string;
-	icon: React.ElementType;
-	buttonText: string;
-	buttonOnClick?: (e: React.MouseEvent) => void;
-}) {
+	items,
+}: { title: string | React.ReactNode; items: string[] }) {
 	return (
-		<Link
-			href={link}
-			className="block h-full transition-all duration-300 hover:-translate-y-1"
-			onClick={(e: React.MouseEvent) => buttonOnClick?.(e)}
-		>
-			<div className="flex flex-col items-start rounded-lg bg-white p-8 h-full shadow-lg hover:shadow-xl transition-all duration-300 group">
-				<div className="w-full flex flex-col h-full">
-					<div className="flex justify-center mb-6">
-						<div className="text-[#15bacc] group-hover:text-[#095d66] transition-colors duration-300">
-							<Icon className="w-14 h-14 text-[#15bacc] group-hover:text-[#095d66] transition-colors duration-300" />
-						</div>
-					</div>
-					<h2 className="text-[1.6rem] font-bold text-[#095d66] group-hover:text-[#15bacc] leading-tight mb-4 text-start transition-colors duration-300">
-						{title}
-					</h2>
-					<p className="text-[1rem] text-[#095d66]/80 group-hover:text-[#095d66] leading-relaxed text-start transition-colors duration-300 mb-6">
-						{description}
-					</p>
-					<div className="mt-auto flex justify-center">
-						<span className="inline-block px-6 py-2 rounded-full bg-[#15bacc] text-white group-hover:bg-[#095d66] transition-colors duration-300">
-							{buttonText}
-						</span>
-					</div>
-				</div>
-			</div>
-		</Link>
+		<div className="flex flex-col gap-6 w-full rounded-xl p-6 backdrop-blur-sm bg-[#095d66] transition-all duration-300">
+			<h2 className="text-xl text-center font-bold text-white border-b border-white/20 pb-4 font-century-gothic">
+				{title}
+			</h2>
+			<ul className="space-y-3">
+				{items.map((item, index) => (
+					<li
+						key={index as number}
+						className="text-white/80 hover:text-white transition-colors duration-200 flex items-center text-sm font-century-gothic"
+					>
+						<span className="w-1 h-1 bg-white/60 rounded-full mr-3 text-center" />
+						{item}
+					</li>
+				))}
+			</ul>
+		</div>
 	);
 }
 
-function HomePageTextCards({
-	handlePurposeClick,
-}: { handlePurposeClick: (e: React.MouseEvent, purpose: string) => void }) {
+function HomePageTextCards() {
 	const { t } = useTranslation();
 
-	const contents = [
-		{
-			title: t("HomePageTextCards.exhibition.title"),
-			description: t("HomePageTextCards.exhibition.description"),
-			link: "#contact-form-section",
-			icon: Building2,
-			buttonText: t("HomePageTextCards.exhibition.buttonText"),
-			contactFormSelectValue: "represent",
-		},
-		{
-			title: t("HomePageTextCards.networking.title"),
-			description: t("HomePageTextCards.networking.description"),
-			link: "#contact-form-section",
-			icon: Users,
-			buttonText: t("HomePageTextCards.networking.buttonText"),
-			contactFormSelectValue: "visitor",
-		},
-		{
-			title: t("HomePageTextCards.forum.title"),
-			description: t("HomePageTextCards.forum.description"),
-			link: "/speakers",
-			icon: Presentation,
-			buttonText: t("HomePageTextCards.forum.buttonText"),
-		},
-		{
-			title: t("HomePageTextCards.awards.title"),
-			description: t("HomePageTextCards.awards.description"),
-			link: "/cre-awards",
-			icon: Trophy,
-			buttonText: t("HomePageTextCards.awards.buttonText"),
-		},
+	const sections = [
+		{ id: "development", Icon: Code2 },
+		{ id: "retail", Icon: Store },
+		{ id: "food", Icon: Utensils },
+		{ id: "entertainment", Icon: Gamepad2 },
+		{ id: "business", Icon: Briefcase },
+		{ id: "technology", Icon: Cpu },
 	];
 
 	return (
-		<div className="w-full max-w-7xl mx-auto px-6 py-12">
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-				{contents.map((content, index) => (
-					<TextCards
-						key={index as number}
-						title={content.title}
-						description={content.description}
-						link={content.link}
-						icon={content.icon}
-						buttonText={content.buttonText}
-						buttonOnClick={(e: React.MouseEvent) => {
-							if (!content.contactFormSelectValue) return;
-							handlePurposeClick(e, content.contactFormSelectValue);
-						}}
-					/>
-				))}
+		<div className="w-full flex justify-center py-10">
+			<div className="max-w-7xl mx-auto px-6">
+				<h4 className="text-center text-[#095d66] text-5xl font-bold mb-16">
+					{t("HomePageTextCards.sectionTitle")}
+				</h4>
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{sections.map(({ id, Icon }) => (
+						<HomePageTextCard
+							key={id}
+							title={
+								<div className="flex items-center justify-center gap-3">
+									<Icon className="w-6 h-6" />
+									<span>{t(`HomePageTextCards.sections.${id}.title`)}</span>
+								</div>
+							}
+							items={
+								t(`HomePageTextCards.sections.${id}.items`, {
+									returnObjects: true,
+								}) as string[]
+							}
+						/>
+					))}
+				</div>
 			</div>
 		</div>
 	);
