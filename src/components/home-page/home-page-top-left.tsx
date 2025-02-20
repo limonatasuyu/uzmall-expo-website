@@ -45,13 +45,13 @@ function HomePageTopLeft({ handlePurposeClick }: HomePageTopLeftProps) {
 					onClick={(e: React.MouseEvent) => handlePurposeClick(e, "represent")}
 					className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-4 sm:py-6 bg-[#0d8995] text-white font-semibold hover:bg-[#0d8995]/50 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
 				>
-					{t("become-a-participant")}
+					{t("HomePageTopLeft.participantButton")}
 				</Button>
 				<Button
 					onClick={(e: React.MouseEvent) => handlePurposeClick(e, "visitor")}
 					className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-4 sm:py-6 bg-[#15bacc] text-white font-semibold hover:bg-[#15bacc]/50 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
 				>
-					{t("become-a-visitor")}
+					{t("HomePageTopLeft.visitorButton")}
 				</Button>
 			</div>
 			<div className="relative w-full h-auto aspect-[2/1] -mt-4 sm:-mt-8 px-4 sm:px-0">

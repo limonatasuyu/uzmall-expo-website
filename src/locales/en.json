@@ -1,7 +1,9 @@
 {
-  "become-a-participant": "Become A Participant", 
-  "become-a-visitor": "Become a visitor!", 
-  "home-page-paragraph": "Brings together players in the commercial and mixed-use real estate market, investments, management and operations, consulting, retail, leasing, technology and services for these sectors.",
+  "HomePageTopLeft": {
+    "participantButton": "Become A Participant",
+    "visitorButton": "Become a visitor!"
+  },
+  "HomePageParagraph": "Brings together players in the commercial and mixed-use real estate market, investments, management and operations, consulting, retail, leasing, technology and services for these sectors.",
   "HomePageSpeakers": {
     "title": "Speakers",
     "speaker1": {

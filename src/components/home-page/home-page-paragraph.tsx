@@ -20,7 +20,7 @@ function HomePageParagraph() {
 				/>
 			</div>
 			<p className="font-century-gothic text-xl min-[950px]:text-3xl font-bold text-[#095d66]/80 select-none hover:text-[#095d66]/90 transition-all duration-300 text-center max-w-[800px]">
-				{t("home-page-paragraph")}
+				{t("HomePageParagraph")}
 			</p>
 		</div>
 	);
