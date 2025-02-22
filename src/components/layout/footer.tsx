@@ -65,9 +65,9 @@ export function Footer() {
 	];
 
 	const quickLinks = [
-		{ label: t("Footer.quickLinks.privacy"), href: "#" },
-		{ label: t("Footer.quickLinks.terms"), href: "#" },
-		{ label: t("Footer.quickLinks.cookies"), href: "#" },
+		{ label: t("Footer.quickLinks.privacy"), href: "/policy" },
+		{ label: t("Footer.quickLinks.terms"), href: "/policy" },
+		{ label: t("Footer.quickLinks.cookies"), href: "/policy" },
 	];
 
 	const contactInfo = [
