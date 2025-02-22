@@ -1,6 +1,6 @@
 "use client";
 import Script from "next/script";
-
+import Image from "next/image";
 export function MetaPixel() {
   return (
     <>
@@ -19,7 +19,7 @@ export function MetaPixel() {
         `}
       </Script>
       <noscript>
-        <img
+        <Image
           height="1"
           width="1"
           style={{ display: 'none' }}

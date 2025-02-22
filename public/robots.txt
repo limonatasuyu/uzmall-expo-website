@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://uzmall-expo.uz/sitemap.xml 
