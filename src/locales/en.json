@@ -1,14 +1,17 @@
 {
   "HomePageTopLeft": {
     "participantButton": "Become A Participant",
-    "visitorButton": "Become a visitor!"
+    "visitorButton": "Become a visitor!",
+    "date": "28-29 May 2025",
+    "time": "10:00 AM - 6:00 PM",
+    "location": "Uzbekistan, Tashkent"
   },
   "HomePageParagraph": "Brings together players in the commercial and mixed-use real estate market, investments, management and operations, consulting, retail, leasing, technology and services for these sectors.",
   "HomePageSpeakers": {
     "title": "Speakers",
     "speaker1": {
       "name": "Murat Azamov",
-      "role": "Organizator",
+      "role": "Organizer",
       "description": "Founder and expert in business systematization, Uzbekistan Franchise Association (UFA). More than 300 stores in 10 countries of the world. Among clients: Collin's, Nautica"
     },
     "speaker2": {
