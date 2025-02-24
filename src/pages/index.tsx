@@ -21,6 +21,7 @@ import { Parallax } from "react-scroll-parallax";
 import { FormatsSection } from "@/components/home-page/home-page-formats-section";
 import { HomePageTable } from "@/components/home-page/home-page-table";
 import { Stickers } from "@/components/layout/stickers";
+import Head from "next/head";
 
 export default function Home() {
   const contactFormRef = useRef<ContactFormRef>(null);
@@ -34,6 +35,48 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Uzmall Expo - Leading Real Estate Exhibition & Forum</title>
+        <meta
+          name="description"
+          content="Uzmall Expo is Uzbekistan's premier real estate exhibition and forum, connecting developers, investors, and industry experts."
+        />
+        <meta
+          name="keywords"
+          content="real estate exhibition, property expo, Uzbekistan real estate, property investment, real estate forum"
+        />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Uzmall Expo - Leading Real Estate Exhibition & Forum" />
+        <meta
+          property="og:description"
+          content="Join Uzbekistan's premier real estate exhibition and forum. Connect with developers, investors and industry experts."
+        />
+        <meta property="og:url" content="https://uzmall-expo.uz" />
+        <meta property="og:site_name" content="Uzmall Expo" />
+        <meta property="og:image" content="/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="ru_RU" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Uzmall Expo - Leading Real Estate Exhibition & Forum" />
+        <meta
+          name="twitter:description"
+          content="Join Uzbekistan's premier real estate exhibition and forum. Connect with developers, investors and industry experts."
+        />
+        <meta name="twitter:image" content="/twitter-image.jpg" />
+
+        {/* Robots & SEO */}
+        <meta name="robots" content="index, follow" />
+        <meta
+          name="googlebot"
+          content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
+        />
+      </Head>
+
       <ParallaxProvider>
         <Image
           src="/uzmall-logo-u.png"
