@@ -63,9 +63,31 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
-      console.log(values);
-      // Redirect to Telegram channel
-      window.location.href = "https://t.me/uzmall_uz";
+      const formattedPhone = `${values.phone.countryCode}${values.phone.number}`;
+      
+      const formData = {
+        name: values.name,
+        email: values.email,
+        phone: formattedPhone,
+        purpose: values.purpose,
+        message: values.message || '',
+        _subject: `New contact form submission - ${values.purpose}`,
+      };
+
+      const response = await fetch('https://formspree.io/f/xqaeorqd', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      window.location.href = "https://t.me/UzMall_Expo";
     } catch (error) {
       console.error("Error:", error);
     } finally {

@@ -45,8 +45,22 @@ export function CREAwardsForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
     try {
-      console.log(values)
-      // Redirect to Telegram channel
+      const response = await fetch('https://formspree.io/f/xqaeorqd', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ...values,
+          _subject: `New CRE Awards submission - ${values.company}`,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
       window.location.href = "https://t.me/uzmall_uz"
     } catch (error) {
       console.error("Error:", error)

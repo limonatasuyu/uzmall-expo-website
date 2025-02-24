@@ -4,7 +4,8 @@
     "visitorButton": "Tashrif buyurish!",
     "date": "28-29 may 2025",
     "time": "10:00 - 18:00",
-    "location": "Uzbekistan, Tashkent"
+    "location": "O‘zbekiston, Toshkent",
+    "paragraph": "Markaziy Osiyodagi tijoriy ko‘chmas mulki bo’yicha birinchi investitsion ko‘rgazma-forum"
   },
   "HomePageParagraph": "tijoriy koʻchmas mulk bozori ishtirokchilarini, boshqaruv va ekspluatatsiya, konsalting, chakana savdo va ushbu sohalar uchun texnologiyalar va xizmatlarni birlashtiradi.",
   "HomePageSpeakers": {
@@ -146,7 +147,7 @@
   "HomePageButtonCards": {
     "exhibition": {
       "title": "Markaziy Osiyodagi eng yirik tijoriy ko'chmas mulk ko'rgazmasi",
-      "description": "100 dan ortiq kompaniyalar, 500 dan ortiq brendlar va 9000 dan ortiq mehmonlarni birlashtirgan tijorat ko'chmas mulk va chakana savdo ko'rgazmasi.",
+      "description": "100 dan ortiq kompaniyalar, 500 dan ortiq brendlar va 9000 dan ortiq mehmonlarni birlashtirgan tijoriy ko'chmas mulk va chakana savdo ko'rgazmasi.",
       "buttonText": "Stendni bron qilish"
     },
     "networking": {

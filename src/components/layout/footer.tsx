@@ -53,7 +53,7 @@ function FooterSocialLink({ icon: Icon, href }: FooterSocialLinkProps) {
 
 const socialLinks = [
 	{ icon: Facebook, href: "https://www.facebook.com/people/UzMalluz/61568829041735/?mibextid=wwXIfr&rdid=yxNce1V0bEpij7Aa&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18pMb1weST%2F%3Fmibextid%3DwwXIfr" },
-	{ icon: Instagram, href: "https://www.instagram.com/uzmall.uz/" },
+	{ icon: Instagram, href: "https://instagram.com/uzmall_expo/" },
 ];
 
 export function Footer() {

@@ -1,6 +1,8 @@
 "use client";
 import Script from "next/script";
 import Image from "next/image";
+import { customLoader } from "@/lib/customLoader";
+
 export function MetaPixel() {
   return (
     <>
@@ -25,6 +27,7 @@ export function MetaPixel() {
           style={{ display: 'none' }}
           src="https://www.facebook.com/tr?id=1323868172192649&ev=PageView&noscript=1"
           alt=""
+          loader={customLoader}
         />
       </noscript>
     </>

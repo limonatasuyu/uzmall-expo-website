@@ -5,7 +5,7 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import translationEN from '@/locales/en.json';
 import translationRU from '@/locales/ru.json';
-
+import translationUZ from '@/locales/uz.json';
 // Only initialize once
 if (!i18n.isInitialized) {
   i18n
@@ -17,11 +17,15 @@ if (!i18n.isInitialized) {
           translation: translationEN
         },
         ru: {
-          translation: translationRU
-        }
+          translation: translationRU,
+        },
+        uz: {
+          translation: translationUZ,
+        },
       },
-      fallbackLng: 'ru',
-      debug: process.env.NODE_ENV === 'development',
+      fallbackLng: "ru",
+      supportedLngs: ["en", "ru", "uz"],
+      debug: process.env.NODE_ENV === "development",
       interpolation: {
         escapeValue: false,
       },

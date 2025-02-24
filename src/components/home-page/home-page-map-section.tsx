@@ -3,7 +3,11 @@
 import { useTranslation } from "react-i18next";
 
 export function MapSection() {
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
+	const language = i18n.language; // "uz" or "en" or "ru"
+
+	// Create dynamic map URL based on language
+	const mapUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191885.25298617416!2d69.2793667!3d41.28259745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0cc379e9c3%3A0xa5a9323b4aa5cb98!2zVGHFn2tlbnQsIMOWemJla2lzdGFu!5e0!3m2!1s${language}!2s${language}!4v1740396970618!5m2!1s${language}!2s${language}`;
 
 	return (
 		<div className="w-[80%] max-w-7xl">
@@ -12,7 +16,7 @@ export function MapSection() {
 			</h2>
 			<div className="w-full h-[450px] rounded-lg overflow-hidden mb-8">
 				<iframe
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191885.25298617416!2d69.2793667!3d41.28259745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0cc379e9c3%3A0xa5a9323b4aa5cb98!2zVGHFn2tlbnQsIMOWemJla2lzdGFu!5e0!3m2!1str!2str!4v1739182576988!5m2!1str!2str"
+					src={mapUrl}
 					width="100%"
 					height="100%"
 					style={{ border: 0 }}
