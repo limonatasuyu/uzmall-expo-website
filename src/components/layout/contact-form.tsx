@@ -17,8 +17,14 @@ export interface ContactFormRef {
   setPurpose: (purpose: string) => void;
 }
 
+interface ToastMessage {
+  message: string;
+  type: 'success' | 'error';
+}
+
 export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<ToastMessage | null>(null);
   const { t } = useTranslation();
 
   const formSchema = z.object({
@@ -87,9 +93,21 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
         throw new Error('Failed to send message');
       }
 
-      window.location.href = "https://t.me/UzMall_Expo";
+      setToast({
+        message: t("ContactForm.success"),
+        type: 'success'
+      });
+      
+      setTimeout(() => {
+        window.location.href = "https://t.me/UzMall_Expo";
+      }, 4000);
+
     } catch (error) {
       console.error("Error:", error);
+      setToast({
+        message: t("ContactForm.error"),
+        type: 'error'
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -97,6 +115,17 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
 
   return (
     <div className="w-full max-w-[500px] p-8 rounded-2xl bg-[#015d66] backdrop-blur-sm">
+      {toast && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
+          <div 
+            className={`${
+              toast.type === 'success' ? 'bg-[#15bacc]' : 'bg-red-500'
+            } text-white px-6 py-4 rounded-xl shadow-lg backdrop-blur-sm border border-white/10 animate-fade-in`}
+          >
+            {toast.message}
+          </div>
+        </div>
+      )}
       <h2 className="text-3xl font-bold text-white text-center mb-8">{t("ContactForm.title")}</h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

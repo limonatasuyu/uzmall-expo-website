@@ -22,6 +22,8 @@
     }
   },
   "ContactForm": {
+    "error": "Biz bilan bog'lanishda xatolik yuz berdi. Iltimos, qayta urining.",
+    "success": "Siz muvaffaqiyatli ro’yxatdan o’tdingiz.",
     "title": "Biz bilan bog'lanish uchun shaklni to'ldiring",
     "phone": "Теlefon",
     "phonePlaceholder": "999-999-9999",

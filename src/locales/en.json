@@ -22,6 +22,8 @@
     }
   },
   "ContactForm": {
+    "error": "An error occurred while submitting the form. Please try again.",
+    "success": "Your registration has been successfully received.",
     "title": "Fill out the form to contact us",
     "phone": "Phone",
     "phonePlaceholder": "999-999-9999",
