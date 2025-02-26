@@ -64,17 +64,17 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
     setIsSubmitting(true);
     try {
       const formattedPhone = `${values.phone.countryCode}${values.phone.number}`;
-      
+
       const formData = {
         name: values.name,
         email: values.email,
         phone: formattedPhone,
         purpose: values.purpose,
-        message: values.message || '',
+        message: values.message || "",
         _subject: `New contact form submission - ${values.purpose}`,
       };
 
-      const response = await fetch('https://formspree.io/f/xqaeorqd', {
+      /*const response = await fetch('https://formspree.io/f/xqaeorqd', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,6 +88,19 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
       }
 
       window.location.href = "https://t.me/UzMall_Expo";
+      */
+
+      const response = await fetch("/api/create-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        window.location.href = "https://t.me/UzMall_Expo";
+      } else {
+        throw new Error("Failed to send message");
+      }
     } catch (error) {
       console.error("Error:", error);
     } finally {
