@@ -80,15 +80,11 @@ function Navbar({
 		},
 		{
 			title: "Navbar.program",
-			href:
-				process.env.NODE_ENV === "development" ? "/speakers" : "/speakers.html",
+			href: "/speakers",
 		},
 		{
 			title: "Navbar.awards",
-			href:
-				process.env.NODE_ENV === "development"
-					? "/cre-awards"
-					: "/cre-awards.html",
+			href: "/cre-awards",
 		},
 		{
 			title: "Navbar.contactus",

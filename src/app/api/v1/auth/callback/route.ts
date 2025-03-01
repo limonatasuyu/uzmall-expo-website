@@ -10,9 +10,9 @@ export async function GET(request: NextRequest) {
 
   const client_id = process.env.AMOCRM_CLIENT_ID;
   const client_secret = process.env.AMOCRM_CLIENT_SECRET;
-  const redirect_uri = `https://${process.env.NODE_ENV === "development" ? "localhost:3000" : "uzmallexpo.uz"}/api/oauth/callback`;
+  const redirect_uri = "https://uzmallexpo.uz/api/oauth/callback";
 
-  const tokenResponse = await fetch(`https://${process.env.AMOCRM_DOMAIN}.amocrm.com/oauth2/access_token`, {
+  const tokenResponse = await fetch("https://infouzmallexpouz.amocrm.ru/oauth2/access_token", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
