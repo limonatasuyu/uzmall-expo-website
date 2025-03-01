@@ -19,7 +19,7 @@ export interface ContactFormRef {
 
 interface ToastMessage {
   message: string;
-  type: 'success' | 'error';
+  type: "success" | "error";
 }
 
 export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
@@ -70,46 +70,58 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
     setIsSubmitting(true);
     try {
       const formattedPhone = `${values.phone.countryCode}${values.phone.number}`;
-      
+
       const formData = {
         name: values.name,
         email: values.email,
         phone: formattedPhone,
         purpose: values.purpose,
-        message: values.message || '',
+        message: values.message || "",
         _subject: `New contact form submission - ${values.purpose}`,
       };
 
-      const response = await fetch('https://formspree.io/f/xqaeorqd', {
-        method: 'POST',
+      /*const emailResponse = await fetch("https://formspree.io/f/xqaeorqd", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to send message');
+      if (!emailResponse.ok) {
+        throw new Error("Failed to send message");
       }
-
-      setToast({
-        message: t("ContactForm.success"),
-        type: 'success'
+      */
+      const response = await fetch("/api/v1/create-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-      
-      setTimeout(() => {
-        window.location.href = "https://t.me/UzMall_Expo";
-      }, 4000);
 
+      if (response.ok) {
+        setToast({
+          message: t("ContactForm.success"),
+          type: "success",
+        });
+
+        setTimeout(() => {
+          window.location.href = "https://t.me/UzMall_Expo";
+        }, 4000);
+      } else {
+        throw new Error("Failed to send message");
+      }
     } catch (error) {
       console.error("Error:", error);
       setToast({
         message: t("ContactForm.error"),
-        type: 'error'
+        type: "error",
       });
     } finally {
       setIsSubmitting(false);
+      setTimeout(() => {
+        setToast(null);
+      }, 4000);
     }
   }
 
@@ -117,9 +129,9 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
     <div className="w-full max-w-[500px] p-8 rounded-2xl bg-[#015d66] backdrop-blur-sm">
       {toast && (
         <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
-          <div 
+          <div
             className={`${
-              toast.type === 'success' ? 'bg-[#15bacc]' : 'bg-red-500'
+              toast.type === "success" ? "bg-[#15bacc]" : "bg-red-500"
             } text-white px-6 py-4 rounded-xl shadow-lg backdrop-blur-sm border border-white/10 animate-fade-in`}
           >
             {toast.message}
