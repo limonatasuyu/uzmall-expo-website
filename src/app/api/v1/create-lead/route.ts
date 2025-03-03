@@ -134,9 +134,12 @@ export async function POST() {
     }
 
     return NextResponse.json({ 
-      text: responseText, 
-      status: response.status,
-      contentType: contentType 
+      success: true,
+      message: "AmoCRM request successful",
+      data: null,
+      //text: responseText, 
+      //status: response.status,
+      //contentType: contentType 
     });
   } catch (error) {
     // Detailed error logging
