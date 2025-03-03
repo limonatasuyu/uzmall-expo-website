@@ -1,10 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 async function makePostRequest(request: NextRequest) {
+
+
   const { name, email, phone, purpose, message, _subject } = await request.json();
 
-  const access_token = process.env.AMOCRM_ACCESS_TOKEN;
-
+  const { AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN } = process.env;
   const contentId = 673735;
   const sourceId = 673741;
   //const mediumId = 673737;
@@ -67,10 +68,10 @@ async function makePostRequest(request: NextRequest) {
     ],
   };
 
-  const response = await fetch("https://infouzmallexpouz.amocrm.ru/api/v4/leads", {
+  const response = await fetch(`https://${AMOCRM_DOMAIN}/api/v4/leads`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${access_token}`,
+      Authorization: `Bearer ${AMOCRM_ACCESS_TOKEN}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify([leadData]),
@@ -98,8 +99,26 @@ async function makePostRequest(request: NextRequest) {
     data: null,
   });
 }
-
+console.log(makePostRequest)
 export async function POST(request: NextRequest) {
+  console.log("POST request received", request);
+  const { AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN } = process.env;
+
+  const response = await fetch(`https://${AMOCRM_DOMAIN}/api/v4/catalogs`, {
+    headers: {
+      Authorization: `Bearer ${AMOCRM_ACCESS_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+  });
+  const contentType = response.headers.get("content-type");
+  if (contentType?.includes("application/json")) {
+    const responseData = await response.json();
+    console.log("Response data:", JSON.stringify(responseData));
+  } else {
+    const responseText = await response.text();
+    console.log("Response text:", responseText);
+  }
+/*
   try {
     return await makePostRequest(request);
   } catch (error: unknown) {
@@ -113,4 +132,76 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+*/
 }
+
+/*
+async function updateLead(leadData: { leadId: string, email: string, phone: string, message: string, purpose: string, _subject: string }) {
+  const { leadId, email, phone, message, purpose, _subject } = leadData;
+
+  const { AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN } = process.env;
+  const contentId = 673735;
+  const sourceId = 673741;
+  const campaignId = 673739;
+  const termId = 673743;
+  const fromId = 673759;
+
+  const updatedLeadData = {
+    id: leadId, // Required: the ID of the lead to update
+    custom_fields_values: [
+      {
+        field_id: fromId,
+        values: [{ value: email }],
+      },
+      {
+        field_id: contentId,
+        values: [{ value: message }],
+      },
+      {
+        field_id: campaignId,
+        values: [{ value: purpose }],
+      },
+      {
+        field_id: termId,
+        values: [{ value: _subject }],
+      },
+      {
+        field_id: sourceId,
+        values: [{ value: phone }],
+      },
+    ],
+  };
+
+  const response = await fetch(`https://${AMOCRM_DOMAIN}/api/v4/leads/${leadId}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${AMOCRM_ACCESS_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedLeadData),
+  });
+
+  const contentType = response.headers.get("content-type");
+
+  if (!response.ok) {
+    let errorMessage = `AmoCRM API Error: ${response.status} ${response.statusText}`;
+    if (contentType?.includes("application/json")) {
+      const errorData = await response.json();
+      errorMessage += ` - ${JSON.stringify(errorData)}`;
+    } else if (contentType?.includes("text/html")) {
+      const responseText = await response.text();
+      errorMessage += ` - ${responseText.substring(0, 200)}${responseText.length > 200 ? "..." : ""}`;
+    }
+    throw new Error(errorMessage);
+  }
+
+  const responseData = await response.json();
+  console.log("Lead updated successfully", JSON.stringify(responseData));
+  return NextResponse.json({
+    success: true,
+    message: "Lead updated successfully",
+    data: null,
+  });
+}
+
+*/

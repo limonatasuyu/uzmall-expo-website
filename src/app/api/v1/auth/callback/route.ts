@@ -10,9 +10,9 @@ export async function GET(request: NextRequest) {
 
   const client_id = process.env.AMOCRM_CLIENT_ID;
   const client_secret = process.env.AMOCRM_CLIENT_SECRET;
-  const redirect_uri = "https://uzmallexpo.uz/api/v1/auth/callback";
+  const redirect_uri = `https://${process.env.AMOCRM_DOMAIN}/api/v1/auth/callback`;
 
-  const tokenResponse = await fetch("https://infouzmallexpouz.amocrm.ru/oauth2/access_token", {
+  const tokenResponse = await fetch(`https://${process.env.AMOCRM_DOMAIN}/oauth2/access_token`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -25,6 +25,8 @@ export async function GET(request: NextRequest) {
   });
 
   const tokenData = await tokenResponse.json();
+
+  console.log("tokenData: ", JSON.stringify(tokenData));
 
   if (tokenData.error) {
     return NextResponse.json({ error: tokenData.error }, { status: 400 });
