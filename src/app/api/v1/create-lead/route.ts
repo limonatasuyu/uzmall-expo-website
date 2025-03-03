@@ -3,10 +3,9 @@ import path from "node:path";
 import fs from "node:fs";
 
 const logToFile = (message: string) => {
-  const logFilePath = path.join(__dirname, "..", "..", "..", "logs", "create-lead.log");
   const timestamp = new Date().toISOString();
   const logMessage = `${timestamp} - ${message}\n`;
-  fs.appendFileSync(logFilePath, logMessage);
+  fs.appendFileSync("create-lead.log", logMessage);
 };
 
 async function makePostRequest(request: NextRequest) {
