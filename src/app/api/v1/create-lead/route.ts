@@ -100,39 +100,60 @@ async function makePostRequest(request: NextRequest) {
 */
 
 export async function POST(request: NextRequest) {
-  console.log("POST request received", request);
-  const { AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN } = process.env;
-
-  const response = await fetch(`https://${AMOCRM_DOMAIN}/api/v4/catalogs`, {
-    headers: {
-      Authorization: `Bearer ${AMOCRM_ACCESS_TOKEN}`,
-      "Content-Type": "application/json",
-    },
-  });
-  const contentType = response.headers.get("content-type");
-  let responseText = "";
-  if (contentType?.includes("application/json")) {
-    const responseData = await response.json();
-    responseText = JSON.stringify(responseData);
-  } else {
-    responseText = await response.text();
-  }
-  return NextResponse.json({ text: responseText, response: response, contentType: contentType });
-  /*
   try {
-    return await makePostRequest(request);
-  } catch (error: unknown) {
-    console.error("Error in POST request:", error);
-    return NextResponse.json(
-      {
-        success: false,
-        message: error instanceof Error ? error.message : "Failed to create lead",
-        data: null,
+    console.log("[API] POST request received");
+    const { AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN } = process.env;
+
+    if (!AMOCRM_DOMAIN || !AMOCRM_ACCESS_TOKEN) {
+      console.error("[API] Missing environment variables");
+      throw new Error("Missing required environment variables");
+    }
+
+    console.log("[API] Making request to AmoCRM");
+    const response = await fetch(`https://${AMOCRM_DOMAIN}/api/v4/catalogs`, {
+      headers: {
+        Authorization: `Bearer ${AMOCRM_ACCESS_TOKEN}`,
+        "Content-Type": "application/json",
       },
+    });
+
+    if (!response.ok) {
+      console.error(`[API] AmoCRM request failed with status ${response.status}`);
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const contentType = response.headers.get("content-type");
+    let responseText = "";
+    if (contentType?.includes("application/json")) {
+      const responseData = await response.json();
+      responseText = JSON.stringify(responseData);
+      console.log("[API] Received JSON response:", responseText);
+    } else {
+      responseText = await response.text();
+      console.log("[API] Received text response:", responseText);
+    }
+
+    return NextResponse.json({ 
+      text: responseText, 
+      status: response.status,
+      contentType: contentType 
+    });
+  } catch (error) {
+    // Detailed error logging
+    console.error('[API] Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      timestamp: new Date().toISOString()
+    });
+
+    return NextResponse.json(
+      { 
+        success: false, 
+        message: error instanceof Error ? error.message : 'An error occurred',
+      }, 
       { status: 500 }
     );
   }
-*/
 }
 
 /*
