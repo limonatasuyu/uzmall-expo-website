@@ -1,4 +1,4 @@
-import type { /*NextResponse, */ NextRequest } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 /*
 async function makePostRequest(request: NextRequest) {
   const { name, email, phone, purpose, message, _subject } = await request.json();
@@ -117,7 +117,7 @@ export async function POST(request: NextRequest) {
   } else {
     responseText = await response.text();
   }
-  throw new Error(responseText);
+  return NextResponse.json({ text: responseText });
   /*
   try {
     return await makePostRequest(request);
