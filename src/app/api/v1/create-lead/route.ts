@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 /*
 async function makePostRequest(request: NextRequest) {
   const { name, email, phone, purpose, message, _subject } = await request.json();
@@ -99,7 +99,7 @@ async function makePostRequest(request: NextRequest) {
 }
 */
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     console.log("[API] POST request received");
     const { AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN } = process.env;
