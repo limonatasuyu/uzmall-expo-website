@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://uzmall-expo.uz</loc>
+<lastmod>2025-03-03T19:10:12.087Z</lastmod>
+<changefreq>daily</changefreq>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://uzmall-expo.uz/speakers</loc>
+<lastmod>2025-03-03T19:10:12.087Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://uzmall-expo.uz/cre-awards</loc>
+<lastmod>2025-03-03T19:10:12.087Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+</urlset>
