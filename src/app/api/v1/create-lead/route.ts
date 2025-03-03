@@ -5,7 +5,14 @@ import fs from "node:fs";
 const logToFile = (message: string) => {
   const timestamp = new Date().toISOString();
   const logMessage = `${timestamp} - ${message}\n`;
-  fs.appendFileSync("create-lead.log", logMessage);
+  const logDir = path.join(process.cwd(), 'logs');
+  
+  // Create logs directory if it doesn't exist
+  if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir, { recursive: true });
+  }
+  
+  fs.appendFileSync(path.join(logDir, 'create-lead.log'), logMessage);
 };
 
 async function makePostRequest(request: NextRequest) {
