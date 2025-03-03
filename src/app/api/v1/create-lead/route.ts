@@ -117,7 +117,7 @@ export async function POST(request: NextRequest) {
   } else {
     responseText = await response.text();
   }
-  return NextResponse.json({ text: responseText });
+  return NextResponse.json({ text: responseText, response: response, contentType: contentType });
   /*
   try {
     return await makePostRequest(request);
