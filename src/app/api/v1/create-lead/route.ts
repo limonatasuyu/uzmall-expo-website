@@ -1,19 +1,4 @@
 import { NextResponse, type NextRequest } from "next/server";
-import path from "node:path";
-import fs from "node:fs";
-
-const logToFile = (message: string) => {
-  const timestamp = new Date().toISOString();
-  const logMessage = `${timestamp} - ${message}\n`;
-  const logDir = path.join(process.cwd(), 'logs');
-  
-  // Create logs directory if it doesn't exist
-  if (!fs.existsSync(logDir)) {
-    fs.mkdirSync(logDir, { recursive: true });
-  }
-  
-  fs.appendFileSync(path.join(logDir, 'create-lead.log'), logMessage);
-};
 
 async function makePostRequest(request: NextRequest) {
   const { name, email, phone, purpose, message, _subject } = await request.json();
@@ -124,15 +109,15 @@ export async function POST(request: NextRequest) {
     },
   });
   const contentType = response.headers.get("content-type");
+  let responseText = "";
   if (contentType?.includes("application/json")) {
     const responseData = await response.json();
-    console.log("Response data:", JSON.stringify(responseData));
-    logToFile(`Response data: ${JSON.stringify(responseData)}`);
+    responseText = JSON.stringify(responseData);
   } else {
-    const responseText = await response.text();
-    console.log("Response text:", responseText);
-    logToFile(`Response text: ${responseText}`);
-    /*
+    responseText = await response.text();
+  }
+  throw new Error(responseText);
+  /*
   try {
     return await makePostRequest(request);
   } catch (error: unknown) {
@@ -148,7 +133,7 @@ export async function POST(request: NextRequest) {
   }
 */
   }
-}
+
 /*
 async function updateLead(leadData: { leadId: string, email: string, phone: string, message: string, purpose: string, _subject: string }) {
   const { leadId, email, phone, message, purpose, _subject } = leadData;
