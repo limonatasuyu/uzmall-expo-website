@@ -1,5 +1,5 @@
-import { NextResponse, type NextRequest } from "next/server";
-
+import type { /*NextResponse, */ NextRequest } from "next/server";
+/*
 async function makePostRequest(request: NextRequest) {
   const { name, email, phone, purpose, message, _subject } = await request.json();
 
@@ -40,7 +40,7 @@ async function makePostRequest(request: NextRequest) {
   { code: 'FBCLID', id: 673771 },
 
  */
-  const leadData = {
+/*const leadData = {
     name,
     custom_fields_values: [
       {
@@ -97,7 +97,8 @@ async function makePostRequest(request: NextRequest) {
     data: null,
   });
 }
-console.log(makePostRequest);
+*/
+
 export async function POST(request: NextRequest) {
   console.log("POST request received", request);
   const { AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN } = process.env;
@@ -132,7 +133,7 @@ export async function POST(request: NextRequest) {
     );
   }
 */
-  }
+}
 
 /*
 async function updateLead(leadData: { leadId: string, email: string, phone: string, message: string, purpose: string, _subject: string }) {
