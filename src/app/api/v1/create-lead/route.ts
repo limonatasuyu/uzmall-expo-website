@@ -16,14 +16,13 @@ async function findContactByEmail(domain: string, token: string, email: string) 
   
   return contacts.find((c: { custom_fields_values?: { field_code?: string; field_name?: string; values?: { value?: string }[] }[] }) =>
     c.custom_fields_values?.some((field: { field_code?: string; field_name?: string; values?: { value?: string }[] }) =>
-      (field.field_code === "EMAIL" ||
-        (field.field_name?.toUpperCase().includes("EMAIL"))) &&
+      (field.field_code === "EMAIL" || (field.field_name?.toUpperCase().includes("EMAIL"))) &&
       field.values?.some((valueObj: { value?: string }) => valueObj.value?.toLowerCase() === email.toLowerCase())
     )
   );
 }
 
-// Create a lead with optional contact link
+// Create a lead
 async function createLead(domain: string, token: string, leadData: { name: string; custom_fields_values: { field_id: number; values: { value: string }[] }[] }) {
   const leadResponse = await fetch(`https://${domain}/api/v4/leads`, {
     method: "POST",
@@ -49,8 +48,8 @@ async function createLead(domain: string, token: string, leadData: { name: strin
   return leadId;
 }
 
-// Create a new contact linked to a lead
-async function createContact(domain: string, token: string, contactData: { name: string; custom_fields_values: { field_code: string; values: { value: string; enum_code: string }[] }[] }) {
+// Create a new contact
+async function createContact(domain: string, token: string, contactData: { name: string; custom_fields_values: { field_id?: number; field_code?: string; values: { value: string; enum_code: string }[] }[] }) {
   const createContactResponse = await fetch(`https://${domain}/api/v4/contacts`, {
     method: "POST",
     headers: {
@@ -69,6 +68,35 @@ async function createContact(domain: string, token: string, contactData: { name:
   return createContactData?._embedded?.contacts?.[0]?.id;
 }
 
+// Link a contact to a lead using the Entity Links API
+async function linkContactToLead(domain: string, token: string, leadId: string, contactId: string | undefined) {
+  if (!contactId) {
+    throw new Error("Contact ID is undefined");
+  }
+
+  const linkResponse = await fetch(`https://${domain}/api/v4/leads/${leadId}/link`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify([
+      {
+        to_entity_id: contactId,
+        to_entity_type: "contacts",
+        metadata: { is_main: true },
+      },
+    ]),
+  });
+  
+  if (!linkResponse.ok) {
+    const errorData = await linkResponse.json();
+    throw new Error(JSON.stringify(errorData));
+  }
+  
+  return await linkResponse.json();
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { name, email, phone, purpose, message, _subject } = await request.json();
@@ -81,63 +109,59 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // STEP 1: Find existing contact by email
+    // STEP 1: Check for an existing contact by email
     const existingContact = await findContactByEmail(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, email);
 
-    // STEP 2: Prepare lead data
-    const leadData: {
-      name: string;
-      custom_fields_values: { field_id: number; values: { value: string }[] }[];
-      _embedded?: { contacts: { id: string }[] };
-    } = {
+    // STEP 2: Prepare lead data (without embedding contact)
+    const leadData = {
       name,
       custom_fields_values: [
-        { field_id: 673759, values: [{ value: email }] }, // from
-        { field_id: 673735, values: [{ value: message }] }, // utm_content
-        { field_id: 673739, values: [{ value: purpose }] }, // utm_campaign
-        { field_id: 673743, values: [{ value: _subject }] }, // utm_term
-        { field_id: 673741, values: [{ value: phone }] }, // utm_source
+        { field_id: 673759, values: [{ value: email }] }, // Example field
+        { field_id: 673735, values: [{ value: message }] },
+        { field_id: 673739, values: [{ value: purpose }] },
+        { field_id: 673743, values: [{ value: _subject }] },
+        { field_id: 673741, values: [{ value: phone }] },
       ],
     };
 
-    if (existingContact) {
-      leadData._embedded = { contacts: [{ id: existingContact.id }] };
-    }
-
-    // Create the lead
+    // Create the lead first
     const leadId = await createLead(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, leadData);
 
-    // STEP 3: If no matching contact was found, create a new one
-    if (!existingContact) {
-      const contactData = {
+    let contactId: string | undefined;
+
+    if (existingContact) {
+      // If contact exists, use its ID
+      contactId = existingContact.id;
+    } else {
+      // If no contact exists, create a new one
+      const contactData: { name: string; custom_fields_values: { field_id?: number; field_code?: string; values: { value: string; enum_code: string }[] }[] } = {
         name,
         custom_fields_values: [
           { field_code: "EMAIL", values: [{ value: email, enum_code: "WORK" }] },
           { field_code: "PHONE", values: [{ value: phone, enum_code: "WORK" }] },
         ],
-        _embedded: { leads: [{ id: leadId }] },
       };
 
-      const newContactId = await createContact(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, contactData);
-      
-      return NextResponse.json({
-        success: true,
-        message: "Lead created and new contact added",
-        leadId,
-        contactId: newContactId,
-      });
+      contactId = await createContact(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, contactData);
     }
 
-    // If a matching contact exists, the lead was created with the contact embedded
+    // STEP 3: Link the contact to the lead using the linking endpoint
+      await linkContactToLead(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, leadId, contactId);
+
     return NextResponse.json({
       success: true,
-      message: "Lead created and linked to existing contact",
+      message: existingContact
+        ? "Lead created and linked to existing contact"
+        : "Lead created and new contact added",
       leadId,
-      contactId: existingContact.id,
+      contactId,
     });
   } catch (error) {
     return NextResponse.json(
-      { success: false, message: error instanceof Error ? error.message : "Unknown error occurred" },
+      {
+        success: false,
+        message: error instanceof Error ? error.message : "Unknown error occurred",
+      },
       { status: 500 }
     );
   }
