@@ -67,12 +67,13 @@ function BrandCategory({
 }
 
 export function HomePageTable() {
+  const { t } = useTranslation();
   const { i18n } = useTranslation();
   const brandData = i18n.language === "ru" ? brandDataRU : i18n.language === "uz" ? brandDataUZ : brandDataEN;
   return (
     <div className="w-full max-w-[90vw] mx-auto px-4 py-8">
       <h2 className="text-[#008996] text-2xl font-medium mb-8 text-center">
-        СРЕДИ ОЖИДАЕМЫХ 500 БРЕНДОВ-ПОСЕТИТЕЛЕЙ
+        {t("HomePageTable.title")}
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

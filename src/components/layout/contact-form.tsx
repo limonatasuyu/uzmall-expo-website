@@ -93,13 +93,25 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
         throw new Error("Failed to send message");
       }
 
-      const response = await fetch("/api/v1/create-lead", {
+
+      const telegramResponse = await fetch("/api/v1/telegram", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
+      if (!telegramResponse.ok) {
+        throw new Error("Failed to send message to telegram");
+      }
+
+
+      const leadResponse = await fetch("/api/v1/create-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (leadResponse.ok) {
         setToast({
           message: t("ContactForm.success"),
           type: "success",
@@ -111,6 +123,9 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
       } else {
         throw new Error("Failed to send message");
       }
+
+
+
     } catch (error) {
       console.error("Error:", error);
       setToast({
