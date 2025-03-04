@@ -34,10 +34,15 @@
     "submit": "Submit a request",
     "purposes": {
       "visitor": "be a visitor to the exhibition (free)",
+      "visitor.value": "Visitor",
       "sell": "sell your commercial property",
+      "sell.value": "Sell",
       "represent": "represent your company",
+      "represent.value": "Represent",
       "speaker": "become a speaker",
-      "ticket": "buy a ticket to the commercial real estate forum"
+      "speaker.value": "Speaker",
+      "ticket": "buy a ticket to the commercial real estate forum",
+      "ticket.value": "Ticket"
     },
     "validation": {
       "nameRequired": "Please enter your name",

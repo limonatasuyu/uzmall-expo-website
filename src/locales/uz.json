@@ -37,7 +37,12 @@
       "sell": "Tijoriy mulkini sotish/ijaraga berish",
       "represent": "kompaniyani taqdim etish",
       "speaker": "ma'ruzachi bo'lish",
-      "ticket": "tijorat ko'chmas mulk forumiga chipta sotib olish"
+      "ticket": "tijorat ko'chmas mulk forumiga chipta sotib olish",
+      "visitor.value": "Tashrif buyurish",
+      "sell.value": "Sotish",
+      "represent.value": "Taqdim etish",
+      "speaker.value": "Ma'ruzachi",
+      "ticket.value": "Chipta"
     },
     "validation": {
       "nameRequired": "Iltimos, ismingizni kiriting",

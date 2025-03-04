@@ -75,7 +75,7 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
         name: values.name,
         email: values.email,
         phone: formattedPhone,
-        purpose: values.purpose,
+        purpose: t(`ContactForm.purposes.${values.purpose}.value`),
         message: values.message || "",
         _subject: `New contact form submission - ${values.purpose}`,
       };
