@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     let leadResponseData: { _embedded?: { leads?: { id?: number }[] } } | undefined;
     try {
       leadResponseData = await leadResponse.json();
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         { success: false, message: "Invalid response from lead creation" },
         { status: 500 }
@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
     let searchData: { _embedded?: { contacts?: { id?: number }[] } } | undefined;
     try {
       searchData = await contactSearchResponse.json();
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         { success: false, message: "Invalid response from contact search" },
         { status: 500 }
@@ -112,7 +112,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true, message: "Lead and Contact processed successfully" });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { success: false, message: "Invalid request data" },
       { status: 400 }
