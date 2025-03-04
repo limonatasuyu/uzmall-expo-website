@@ -1,4 +1,30 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
+
+const CATALOG_ID = 25166961;
+export async function POST(req: NextRequest) {
+  if (req.method !== "POST") {
+    return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
+  }
+
+  const { AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN } = process.env;
+  const apiUrl = `https://${AMOCRM_DOMAIN}/api/v4/catalogs/${CATALOG_ID}/elements`;
+
+  const response = await fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AMOCRM_ACCESS_TOKEN}`,
+    },
+    body: JSON.stringify({
+      name: "New Lead from Next.js",
+      price: 5000,
+    }),
+  });
+
+  const data = await response.json();
+  return NextResponse.json(data);
+}
+
 /*
 async function makePostRequest(request: NextRequest) {
   const { name, email, phone, purpose, message, _subject } = await request.json();
@@ -98,7 +124,7 @@ async function makePostRequest(request: NextRequest) {
   });
 }
 */
-
+/*
 export async function POST() {
   try {
     console.log("[API] POST request received");
@@ -158,7 +184,7 @@ export async function POST() {
     );
   }
 }
-
+*/
 /*
 async function updateLead(leadData: { leadId: string, email: string, phone: string, message: string, purpose: string, _subject: string }) {
   const { leadId, email, phone, message, purpose, _subject } = leadData;
