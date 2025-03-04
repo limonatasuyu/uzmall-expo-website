@@ -1,6 +1,78 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
+
+export async function POST(request: NextRequest) {
+  try {
+    const { name, email, phone, purpose, message, _subject } = await request.json();
+    const { AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN } = process.env;
+
+    if (!AMOCRM_DOMAIN || !AMOCRM_ACCESS_TOKEN) {
+      return NextResponse.json(
+        { success: false, message: "Missing AmoCRM credentials" },
+        { status: 500 }
+      );
+    }
+
+    // STEP 1: Check for an existing contact by email
+    const existingContact = await findContactByEmail(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, email);
+
+    // STEP 2: Prepare lead data (without embedding contact)
+    const leadData = {
+      name,
+      custom_fields_values: [
+        { field_id: 673759, values: [{ value: email }] }, // Example field
+        { field_id: 673735, values: [{ value: message }] },
+        { field_id: 673739, values: [{ value: purpose }] },
+        { field_id: 673743, values: [{ value: _subject }] },
+        { field_id: 673741, values: [{ value: phone }] },
+      ],
+    };
+
+    // Create the lead first
+    const leadId = await createLead(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, leadData);
+
+    let contactId: string | undefined;
+
+    if (existingContact) {
+      // If contact exists, use its ID
+      contactId = existingContact.id;
+    } else {
+      // If no contact exists, create a new one
+      const contactData: { name: string; custom_fields_values: { field_id?: number; field_code?: string; values: { value: string; enum_code: string }[] }[] } = {
+        name,
+        custom_fields_values: [
+          { field_code: "EMAIL", values: [{ value: email, enum_code: "WORK" }] },
+          { field_code: "PHONE", values: [{ value: phone, enum_code: "WORK" }] },
+          { field_code: "POSITION", values: [{ value: purpose, enum_code: "WORK" }] },
+        ],
+      };
+
+      contactId = await createContact(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, contactData);
+    }
+
+    // STEP 3: Link the contact to the lead using the linking endpoint
+      await linkContactToLead(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, leadId, contactId);
+
+    return NextResponse.json({
+      success: true,
+      message: existingContact
+        ? "Lead created and linked to existing contact"
+        : "Lead created and new contact added",
+      leadId,
+      contactId,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: error instanceof Error ? error.message : "Unknown error occurred",
+      },
+      { status: 500 }
+    );
+  }
+}
+
 // Fetch contacts and find a matching one by email
 async function findContactByEmail(domain: string, token: string, email: string) {
   const contactsResponse = await fetch(`https://${domain}/api/v4/contacts`, {
@@ -95,74 +167,4 @@ async function linkContactToLead(domain: string, token: string, leadId: string, 
   }
   
   return await linkResponse.json();
-}
-
-export async function POST(request: NextRequest) {
-  try {
-    const { name, email, phone, purpose, message, _subject } = await request.json();
-    const { AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN } = process.env;
-
-    if (!AMOCRM_DOMAIN || !AMOCRM_ACCESS_TOKEN) {
-      return NextResponse.json(
-        { success: false, message: "Missing AmoCRM credentials" },
-        { status: 500 }
-      );
-    }
-
-    // STEP 1: Check for an existing contact by email
-    const existingContact = await findContactByEmail(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, email);
-
-    // STEP 2: Prepare lead data (without embedding contact)
-    const leadData = {
-      name,
-      custom_fields_values: [
-        { field_id: 673759, values: [{ value: email }] }, // Example field
-        { field_id: 673735, values: [{ value: message }] },
-        { field_id: 673739, values: [{ value: purpose }] },
-        { field_id: 673743, values: [{ value: _subject }] },
-        { field_id: 673741, values: [{ value: phone }] },
-      ],
-    };
-
-    // Create the lead first
-    const leadId = await createLead(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, leadData);
-
-    let contactId: string | undefined;
-
-    if (existingContact) {
-      // If contact exists, use its ID
-      contactId = existingContact.id;
-    } else {
-      // If no contact exists, create a new one
-      const contactData: { name: string; custom_fields_values: { field_id?: number; field_code?: string; values: { value: string; enum_code: string }[] }[] } = {
-        name,
-        custom_fields_values: [
-          { field_code: "EMAIL", values: [{ value: email, enum_code: "WORK" }] },
-          { field_code: "PHONE", values: [{ value: phone, enum_code: "WORK" }] },
-        ],
-      };
-
-      contactId = await createContact(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, contactData);
-    }
-
-    // STEP 3: Link the contact to the lead using the linking endpoint
-      await linkContactToLead(AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN, leadId, contactId);
-
-    return NextResponse.json({
-      success: true,
-      message: existingContact
-        ? "Lead created and linked to existing contact"
-        : "Lead created and new contact added",
-      leadId,
-      contactId,
-    });
-  } catch (error) {
-    return NextResponse.json(
-      {
-        success: false,
-        message: error instanceof Error ? error.message : "Unknown error occurred",
-      },
-      { status: 500 }
-    );
-  }
 }
