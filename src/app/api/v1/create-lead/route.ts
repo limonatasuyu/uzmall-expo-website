@@ -1,3 +1,4 @@
+
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
@@ -12,22 +13,14 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Field IDs for tracking data
-  const contentId = 673735;
-  const sourceId = 673741;
-  const campaignId = 673739;
-  const termId = 673743;
-  const fromId = 673759;
-
-  // Create a new lead with custom fields
   const leadData = {
     name,
     custom_fields_values: [
-      { field_id: fromId, values: [{ value: email }] },
-      { field_id: contentId, values: [{ value: message }] },
-      { field_id: campaignId, values: [{ value: purpose }] },
-      { field_id: termId, values: [{ value: _subject }] },
-      { field_id: sourceId, values: [{ value: phone }] },
+      { field_id: 673759, values: [{ value: email }] }, // from
+      { field_id: 673735, values: [{ value: message }] }, // utm_content
+      { field_id: 673739, values: [{ value: purpose }] }, // utm_campaign
+      { field_id: 673743, values: [{ value: _subject }] }, // utm_term
+      { field_id: 673741, values: [{ value: phone }] }, // utm_source
     ],
   };
 
@@ -57,50 +50,37 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Get all contacts from amoCRM
   const contactsResponse = await fetch(`https://${AMOCRM_DOMAIN}/api/v4/contacts`, {
     headers: { Authorization: `Bearer ${AMOCRM_ACCESS_TOKEN}` },
   });
 
-  let contactId: number | null = null;
-  if (contactsResponse.ok) {
-    const contactsData = await contactsResponse.json();
-    const contacts = contactsData?._embedded?.contacts || [];
-    // Filter the contacts to find one with an EMAIL custom field matching the provided email
-    for (const contact of contacts) {
-      if (contact.custom_fields_values) {
-        for (const field of contact.custom_fields_values) {
-          // Check if this is the EMAIL field
-          if (field.field_code === "EMAIL" || (field.field_name?.toUpperCase().includes("EMAIL"))) {
-            for (const valueObj of field.values) {
-              if (valueObj.value.toLowerCase() === email.toLowerCase()) {
-                contactId = contact.id;
-                break;
-              }
-            }
-          }
-          if (contactId) break;
-        }
-      }
-      if (contactId) break;
-    }
-  } else {
+  if (!contactsResponse.ok) {
     return NextResponse.json(
       { success: false, message: "Failed to fetch contacts" },
       { status: 500 }
     );
   }
 
-  if (contactId) {
-    // Update the existing contact to embed (link) the new lead
+  const contactsData = await contactsResponse.json();
+  const contacts = contactsData?._embedded?.contacts || [];
+
+  const contact = contacts.find((c: { custom_fields_values?: { field_code?: string; field_name?: string; values?: { value?: string }[] }[] }) =>
+    c.custom_fields_values?.some((field) =>
+      (field.field_code === "EMAIL" || field.field_name?.toUpperCase().includes("EMAIL")) &&
+      field.values?.some((valueObj: { value?: string }) => valueObj.value?.toLowerCase() === email.toLowerCase())
+    )
+  );
+
+  if (contact) {
     const updateContactResponse = await fetch(`https://${AMOCRM_DOMAIN}/api/v4/contacts`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${AMOCRM_ACCESS_TOKEN}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify([{ id: contactId, _embedded: { leads: [{ id: leadId }] } }]),
+      body: JSON.stringify([{ id: contact.id, _embedded: { leads: [{ id: leadId }] } }]),
     });
+
     if (!updateContactResponse.ok) {
       const errorData = await updateContactResponse.json();
       return NextResponse.json(
@@ -108,38 +88,44 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
-  } else {
-    // Create a new contact with the new lead embedded
-    const contactData = {
-      name,
-      custom_fields_values: [
-        { field_code: "EMAIL", values: [{ value: email, enum_code: "WORK" }] },
-        { field_code: "PHONE", values: [{ value: phone, enum_code: "WORK" }] },
-      ],
-      _embedded: { leads: [{ id: leadId }] },
-    };
 
-    const createContactResponse = await fetch(`https://${AMOCRM_DOMAIN}/api/v4/contacts`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${AMOCRM_ACCESS_TOKEN}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify([contactData]),
+    return NextResponse.json({
+      success: true,
+      message: "Lead created and linked to existing contact",
+      leadId,
+      contactId: contact.id,
     });
-    if (!createContactResponse.ok) {
-      const errorData = await createContactResponse.json();
-      return NextResponse.json(
-        { success: false, message: "Failed to create contact", error: errorData },
-        { status: 500 }
-      );
-    }
+  }
+
+  const contactData = {
+    name,
+    custom_fields_values: [
+      { field_code: "EMAIL", values: [{ value: email, enum_code: "WORK" }] },
+      { field_code: "PHONE", values: [{ value: phone, enum_code: "WORK" }] },
+    ],
+    _embedded: { leads: [{ id: leadId }] },
+  };
+
+  const createContactResponse = await fetch(`https://${AMOCRM_DOMAIN}/api/v4/contacts`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${AMOCRM_ACCESS_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify([contactData]),
+  });
+
+  if (!createContactResponse.ok) {
+    const errorData = await createContactResponse.json();
+    return NextResponse.json(
+      { success: false, message: "Failed to create contact", error: errorData },
+      { status: 500 }
+    );
   }
 
   return NextResponse.json({
     success: true,
-    message: "Lead and Contact processed successfully",
+    message: "Lead created and new contact added",
     leadId,
-    contactId,
   });
 }
