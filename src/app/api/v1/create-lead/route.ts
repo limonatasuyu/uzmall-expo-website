@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 const CATALOG_ID = 25166961;
 export async function POST(req: NextRequest) {
+  const { name, email, phone, purpose, message, _subject } = await req.json();
   if (req.method !== "POST") {
     return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
   }
@@ -9,6 +10,16 @@ export async function POST(req: NextRequest) {
   const { AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN } = process.env;
   const apiUrl = `https://${AMOCRM_DOMAIN}/api/v4/catalogs/${CATALOG_ID}/elements`;
 
+
+  const fieldIdsResponse = await fetch(`https://${AMOCRM_DOMAIN}/api/v4/catalogs/${CATALOG_ID}/custom_fields`, {
+    headers: {
+      Authorization: `Bearer ${AMOCRM_ACCESS_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+  }); 
+
+  const fieldIds = await fieldIdsResponse.json();
+  
   const response = await fetch(apiUrl, {
     method: "POST",
     headers: {
@@ -16,15 +27,19 @@ export async function POST(req: NextRequest) {
       Authorization: `Bearer ${AMOCRM_ACCESS_TOKEN}`,
     },
     body: JSON.stringify({
-      name: "New Lead from Next.js",
-      price: 5000,
+      name: name,
+      email: email,
+      phone: phone,
+      purpose: purpose,
+      message: message,
+      _subject: _subject,
     }),
   });
 
   const data = await response.json();
 
   console.log("data: ", data);
-  return NextResponse.json(data);
+  return NextResponse.json({data, fieldIds});
 }
 
 /*
