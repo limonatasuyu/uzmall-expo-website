@@ -1,5 +1,5 @@
-import { NextResponse, type NextRequest } from "next/server";
-
+import { NextResponse } from "next/server";
+/*
 const CATALOG_ID = "#25166995";
 export async function POST(req: NextRequest) {
   const { name, email, phone, purpose, message, _subject } = await req.json();
@@ -140,7 +140,6 @@ async function makePostRequest(request: NextRequest) {
   });
 }
 */
-/*
 export async function POST() {
   try {
     console.log("[API] POST request received");
@@ -179,9 +178,9 @@ export async function POST() {
       success: true,
       message: "AmoCRM request successful",
       data: null,
-      //text: responseText, 
-      //status: response.status,
-      //contentType: contentType 
+      text: responseText, 
+      status: response.status,
+      contentType: contentType 
     });
   } catch (error) {
     // Detailed error logging
@@ -200,7 +199,7 @@ export async function POST() {
     );
   }
 }
-*/
+
 /*
 async function updateLead(leadData: { leadId: string, email: string, phone: string, message: string, purpose: string, _subject: string }) {
   const { leadId, email, phone, message, purpose, _subject } = leadData;
