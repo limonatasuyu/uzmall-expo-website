@@ -80,7 +80,7 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
         _subject: `New contact form submission - ${values.purpose}`,
       };
 
-      /*const emailResponse = await fetch("https://formspree.io/f/xqaeorqd", {
+      const emailResponse = await fetch("https://formspree.io/f/xqaeorqd", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +92,7 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
       if (!emailResponse.ok) {
         throw new Error("Failed to send message");
       }
-      */
+
       const response = await fetch("/api/v1/create-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
