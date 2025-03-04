@@ -6,9 +6,9 @@ export async function POST(request: Request) {
   const { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } = process.env;
   try {
     const body = await request.json();
-    const { name, mail, phone, purpose, message, _subject } = body;
+    const { name, email, phone, purpose, message, _subject } = body;
 
-    if (!name || !mail || !phone) {
+    if (!name || !email || !phone) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
       New Contact Form Submission:
       ---------------------------
       Name: ${name}
-      Email: ${mail}
+      Email: ${email}
       Phone: ${phone}
       Purpose: ${purpose}
       Message: ${message}
