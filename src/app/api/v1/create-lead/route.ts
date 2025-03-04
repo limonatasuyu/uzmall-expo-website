@@ -39,12 +39,12 @@ export async function POST(request: NextRequest) {
       contactId = existingContact.id;
     } else {
       // If no contact exists, create a new one
-      const contactData: { name: string; custom_fields_values: { field_id?: number; field_code?: string; values: { value: string; enum_code: string }[] }[] } = {
+      const contactData: { name: string; custom_fields_values: { field_id?: number; field_code?: string; values: { value: string; enum_code?: string }[] }[] } = {
         name,
         custom_fields_values: [
           { field_code: "EMAIL", values: [{ value: email, enum_code: "WORK" }] },
           { field_code: "PHONE", values: [{ value: phone, enum_code: "WORK" }] },
-          { field_code: "POSITION", values: [{ value: purpose, enum_code: "WORK" }] },
+          { field_code: "POSITION", values: [{ value: purpose }] },
         ],
       };
 
@@ -121,7 +121,7 @@ async function createLead(domain: string, token: string, leadData: { name: strin
 }
 
 // Create a new contact
-async function createContact(domain: string, token: string, contactData: { name: string; custom_fields_values: { field_id?: number; field_code?: string; values: { value: string; enum_code: string }[] }[] }) {
+async function createContact(domain: string, token: string, contactData: { name: string; custom_fields_values: { field_id?: number; field_code?: string; values: { value: string; enum_code?: string }[] }[] }) {
   const createContactResponse = await fetch(`https://${domain}/api/v4/contacts`, {
     method: "POST",
     headers: {
