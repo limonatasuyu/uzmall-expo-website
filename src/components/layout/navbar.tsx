@@ -129,7 +129,7 @@ function Navbar({
 											/>
 										</a>
 										<a
-											href="https://wa.me/qr/UX6IXITIUGR7A1"
+											href="https://wa.me/998773223366"
 											className="font-bold text-[#095d66] hover:text-[#15bacc] bg-white box-shadow-lg w-fit p-2 rounded-full"
 										>
 											<Image
@@ -185,7 +185,7 @@ function Navbar({
 											/>
 										</a>
 										<a
-											href="https://wa.me/qr/UX6IXITIUGR7A1"
+											href="https://wa.me/998773223366"
 											className="font-bold text-[#095d66] hover:text-[#15bacc] bg-white box-shadow-lg w-fit p-2 rounded-full"
 										>
 											<Image

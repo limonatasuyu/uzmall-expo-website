@@ -8,7 +8,7 @@ function Stickers() {
 	return (
 		<div className="fixed flex flex-col gap-4 z-50 transition-all duration-300 bottom-8 right-8">
 			<Link
-				href="https://wa.me/qr/UX6IXITIUGR7A1"
+				href="https://wa.me/998773223366"
 				target="_blank"
 				rel="noopener noreferrer"
 				className="w-14 h-14  rounded-full flex items-center justify-center shadow-lg transition-colors duration-300 z-50"

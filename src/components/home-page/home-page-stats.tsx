@@ -18,7 +18,7 @@ function HomePageStats() {
     },
     {
       key: "countries",
-      icon: "/25+.png"
+      icon: "/50+planes.png"
     },
     {
       key: "brands",

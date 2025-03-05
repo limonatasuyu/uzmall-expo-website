@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, phone, purpose, message, _subject } = await request.json();
+    const { name, email, phone, purpose, message, _subject, type } = await request.json();
     const { AMOCRM_DOMAIN, AMOCRM_ACCESS_TOKEN } = process.env;
 
     if (!AMOCRM_DOMAIN || !AMOCRM_ACCESS_TOKEN) {
@@ -21,12 +21,13 @@ export async function POST(request: NextRequest) {
     const leadData = {
       name,
       custom_fields_values: [
-        { field_id: 673759, values: [{ value: email }] }, // Example field
+        { field_id: 673759, values: [{ value: email }] },
         { field_id: 673735, values: [{ value: message }] },
         { field_id: 673739, values: [{ value: purpose }] },
         { field_id: 673743, values: [{ value: _subject }] },
         { field_id: 673741, values: [{ value: phone }] },
       ],
+      pipeline_id: type === "visitor" ? 9309142 : undefined,
     };
 
     // Create the lead first

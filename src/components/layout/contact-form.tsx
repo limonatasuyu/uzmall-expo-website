@@ -78,6 +78,7 @@ export const ContactForm = forwardRef<ContactFormRef>((props, ref) => {
         purpose: t(`ContactForm.purposes.${values.purpose}.value`),
         message: values.message || "",
         _subject: `New contact form submission - ${values.purpose}`,
+        type: (values.purpose === "visitor" || values.purpose === "ticket") ? "visitor" : "lead",
       };
 
       const emailResponse = await fetch("https://formspree.io/f/xqaeorqd", {

@@ -192,7 +192,7 @@
         "thinText": "tashrif buyuruvchilar, potentsial ijarachilar va investorlar"
       },
       "countries": {
-        "boldText": "25+",
+        "boldText": "50+",
         "thinText": "Brendlar keladigan mamlakatlar"
       },
       "brands": {
@@ -276,6 +276,7 @@
       "description": "Siz 500-1000 kishilik auditoriyaga kompaniyangiz, mahsulot va xizmatlaringiz haqida e'lon qilishingiz, shuningdek, yangi aloqalar o'rnatishingiz mumkin."
     },
     "moreInfo": {
+      "title": "Tafsilotlar",
       "description": "Hamkorlik formatlarining to'liq ro'yxati va tafsilotlarini menejerdan so'rov qoldirish orqali bilib olishingiz mumkin.",
       "button": "Ariza qoldirish"
     }
