@@ -60,8 +60,8 @@ export async function POST(request: NextRequest) {
       message: existingContact
         ? "Lead created and linked to existing contact"
         : "Lead created and new contact added",
-      leadId,
-      contactId,
+      // leadId,
+      // contactId,
     });
   } catch (error) {
     return NextResponse.json(
